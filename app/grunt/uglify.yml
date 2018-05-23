@@ -1,0 +1,19 @@
+main:
+  options:
+    mangle:
+      except: [ "jQuery", "Backbone" ]
+    sourceMap: false
+    beautify: true
+#  files:
+#    web/js/backend.js:
+#      - app/Resources/js/backend/**/*.js
+
+#vendors:
+#  options:
+#    mangle:
+#      except: [ "jQuery", "Backbone" ]
+#    sourceMap: false
+#    beautify: true
+#  files:
+#    web/js/backend_head.js:
+#      - vendor-web/jquery/dist/jquery.min.js

@@ -1,0 +1,24 @@
+#dev_frontend:
+#  options:
+#    optimization: 2
+#    dumpLineNumbers: all
+#    sourceMap: false
+#  files:
+#    web/css/frontend.css: app/Resources/FOSUserBundle/frontend/main.less
+#
+#dev_backend:
+#  options:
+#    optimization: 2
+#    dumpLineNumbers: all
+#    sourceMap: false
+#  files:
+#    web/css/backend.css: app/Resources/less/backend/main.less
+#
+#prod_backend:
+#  options:
+#    compress: true
+#    yuicompress: true
+#    optimization: 2
+#  files:
+#    web/css/backend.css: app/Resources/less/backend/main.less
+#    web/css/backend_pace.css: app/Resources/less/backend/pace.less

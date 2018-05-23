@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ###> symfony/framework-bundle ###
 /.env
@@ -21,3 +22,25 @@ yarn-error.log
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+=======
+/.web-server-pid
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+/vendor-web/
+/node-modules/
+/tests/
+
+>>>>>>> 767764c25d3bab6402880506f1de1496d1104ba6
