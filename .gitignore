@@ -17,5 +17,4 @@
 /vendor-web/
 /node-modules/
 /tests/
-.idea/*
 composer.lock
