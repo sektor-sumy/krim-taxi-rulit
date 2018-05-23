@@ -18,3 +18,4 @@
 /node-modules/
 /tests/
 composer.lock
+.idea/
