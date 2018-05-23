@@ -1,0 +1,23 @@
+{
+  "name": "krim-taxi-rulit",
+  "homepage": "https://github.com/sektor-sumy/krim-taxi-rulit",
+  "directory": "vendor-web/",
+  "authors": [
+    "reznikovkg <reznikov_kosta@yandex.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./vendor-web/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.*",
+    "jquery": "3.3.*"
+  }
+}
