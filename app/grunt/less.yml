@@ -6,14 +6,17 @@
 #  files:
 #    web/css/frontend.css: app/Resources/FOSUserBundle/frontend/main.less
 #
-#dev_backend:
-#  options:
-#    optimization: 2
-#    dumpLineNumbers: all
-#    sourceMap: false
-#  files:
-#    web/css/backend.css: app/Resources/less/backend/main.less
-#
+dev_backend:
+  options:
+    optimization: 2
+    dumpLineNumbers: all
+    sourceMap: false
+  files:
+    web/css/fos.css:
+      - app/Resources/less/fos/*.less
+    web/css/admin.css:
+      - app/Resources/less/admin/*.less
+
 #prod_backend:
 #  options:
 #    compress: true

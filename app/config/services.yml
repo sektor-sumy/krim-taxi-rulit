@@ -33,3 +33,14 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.handler.login_success:
+        class:  AppBundle\Component\Authentication\Handler\LoginSuccessHandler
+        arguments:  ['@router', '@security.authorization_checker']
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+    app.handler.logout_success:
+        class: AppBundle\Component\Authentication\Handler\LogoutSuccessHandler
+        arguments:  ['@router']
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

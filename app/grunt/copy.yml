@@ -1,10 +1,14 @@
 default:
   files:
-#    -
-#      expand: true
-#      flatten: false
-#      cwd: "./app/Resources/img"
-#      src:
-#        - "*/**"
-#        - "!sprites/**"
-#      dest: web/img
+     -
+        expand: true
+        flatten: true
+        src:
+          - ./vendor-web/bootstrap/dist/css/bootstrap.min.css
+        dest: web/css
+     -
+        expand: true
+        flatten: true
+        src:
+          - ./vendor-web/jquery/dist/jquery.min.js
+        dest: web/js
