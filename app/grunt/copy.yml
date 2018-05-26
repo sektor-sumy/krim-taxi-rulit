@@ -1,14 +1,59 @@
 default:
   files:
+
+#admin
      -
         expand: true
         flatten: true
         src:
           - ./vendor-web/bootstrap/dist/css/bootstrap.min.css
-        dest: web/css
+        dest: web/admin/css
+
      -
         expand: true
         flatten: true
         src:
           - ./vendor-web/jquery/dist/jquery.min.js
+        dest: web/admin/js
+
+#frontend
+     -
+        expand: true
+        flatten: false
+        cwd: "./app/Resources/img/"
+        src:
+          - "**/*.*"
+        dest: web/img
+
+#ethanol template
+     -
+        expand: true
+        flatten: false
+        cwd: "./vendor-web/ethanol/css/"
+        src:
+          - "**/*.*"
+        dest: web/css
+
+     -
+        expand: true
+        flatten: false
+        cwd: "./vendor-web/ethanol/fonts/"
+        src:
+          - "**/*.*"
+        dest: web/fonts
+
+     -
+        expand: true
+        flatten: false
+        cwd: "./vendor-web/ethanol/img/"
+        src:
+          - "**/*.*"
+        dest: web/img
+
+     -
+        expand: true
+        flatten: false
+        cwd: "./vendor-web/ethanol/js/"
+        src:
+          - "**/*.*"
         dest: web/js

@@ -12,9 +12,9 @@ dev_backend:
     dumpLineNumbers: all
     sourceMap: false
   files:
-    web/css/fos.css:
+    web/admin/css/fos.css:
       - app/Resources/less/fos/*.less
-    web/css/admin.css:
+    web/admin/css/admin.css:
       - app/Resources/less/admin/*.less
 
 #prod_backend:

@@ -14,8 +14,16 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        return $this->render('frontend/homepage.html.twig');
+    }
+
+
+    /**
+     * @Route("/contact", name="frontend.contact")
+     */
+    public function contactAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('frontend/contact.html.twig');
     }
 }
