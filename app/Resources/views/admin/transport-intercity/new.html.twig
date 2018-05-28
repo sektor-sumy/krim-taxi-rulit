@@ -1,0 +1,36 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block content %}
+
+{% include('admin/transport-intercity/include/action.html.twig') %}
+
+<h2>Добавление</h2>
+<div class="table-responsive">
+    {{ form_start(form) }}
+    <div class="box-body">
+        <div class="form-group">
+            {{ form_label(form.cityFrom) }}
+            {{ form_widget(form.cityFrom, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.cityIn) }}
+            {{ form_widget(form.cityIn, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.class) }}
+            {{ form_widget(form.class, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.priceType) }}
+            {{ form_widget(form.priceType, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.price) }}
+            {{ form_widget(form.price, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <input class="btn btn-success btn-sm" type="submit" value="Добавить" />
+    </div>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'frontend/base.html.twig' %}
+{% extends 'frontend/main.html.twig' %}
 
 {% block content %}
 <div id="tf-home">
@@ -7,7 +7,7 @@
             <div class="content-heading text-center"> <!-- Input Your Home Content Here -->
                 <h1>ТАКСИ ИЗ АЭРОПОРТА</h1>
                 <p class="lead">Честные фиксированные цены<br>Гарантия лучшей цены в Крыму</p>
-                <a href="#tf-works" class="scroll goto-btn text-uppercase">Перейти к тарифам</a> <!-- Link to your portfolio section -->
+                <a href="#tf-works" class="scroll goto-btn text-uppercase">Перейти к тарифам <i class="fas fa-angle-double-right"></i></a> <!-- Link to your portfolio section -->
             </div><!-- End Input Your Home Content Here -->
         </div> <!-- end container -->
     </div><!-- End Overlay Color -->
@@ -18,18 +18,17 @@
 <div id="tf-works">
     <div class="container">
         <div class="section-header">
-            <h2>Узнать стоимость  <span class="highlight"><strong>трансфера</strong></span></h2>
+            <h2>Межгородские <span class="highlight"><strong>перевозки</strong></span></h2>
             <h5><em>We design and build functional and beautiful websites</em></h5>
         </div>
 
         <div class="text-center">
-            <ul class="list-inline cat"> <!-- Portfolio Filter Categories -->
-                <li><a href="#" data-filter="*" class="active">All</a></li>
-                <li><a href="#" data-filter=".web">Web</a></li>
-                <li><a href="#" data-filter=".brand">Branding</a></li>
+            <ul class="list-inline cat">
+                <li><a href="#" data-filter="*" class="active">А-класс</a></li>
+                <li><a href="#" data-filter=".web">D-класс</a></li>
+                <li><a href="#" data-filter=".brand">Автобус</a></li>
                 <li><a href="#" data-filter=".app">Apps</a></li>
-                <li><a href="#" data-filter=".others">Others</a></li>
-            </ul><!-- End Portfolio Filter Categories -->
+            </ul>
         </div>
 
     </div><!-- End Container -->

@@ -4,7 +4,7 @@
 
 {% block content %}
     {% block fos_user_content %}
-        <div class="fos-form text-center">
+        <div class="fos-form text-center" >
             <h5>Регистрация пользователя</h5>
 
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register  form-signin'}}) }}

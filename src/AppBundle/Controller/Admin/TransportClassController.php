@@ -3,6 +3,8 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\City;
+use AppBundle\Entity\TransportClass;
+use AppBundle\Form\TransportClassType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,19 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 /**
  * Class CityController
- * @Route("/city")
+ * @Route("/transport-class")
  */
-class CityController extends Controller
+class TransportClassController extends Controller
 {
     /**
-     * @Route("/", name="admin.city")
+     * @Route("/", name="admin.transport-class")
      */
     public function indexAction(Request $request)
     {
-        $citys = $this->getDoctrine()->getRepository(City::class)->findAll();
+        $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->findAll();
 
-        return $this->render('admin/city/list.html.twig', [
-            'citys' => $citys,
+        return $this->render('admin/transport-class/list.html.twig', [
+            'transportClasses' => $transportClasses,
         ]);
     }
 
@@ -31,7 +33,7 @@ class CityController extends Controller
     /**
      * Creates a new city entity.
      *
-     * @Route("/new", name="admin.city.new")
+     * @Route("/new", name="admin.transport-class.new")
      *
      * @param Request $request
      *
@@ -39,46 +41,44 @@ class CityController extends Controller
      */
     public function newAction(Request $request)
     {
-        $city = new City();
-        $form = $this->createForm('AppBundle\Form\CityType', $city);
+        $transportClass = new TransportClass();
+        $form = $this->createForm('AppBundle\Form\TransportClassType', $transportClass);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $city = $form->getData();
-
-            $em = $this->get('doctrine.orm.entity_manager');
+            $transportClass = $form->getData();
             try {
-                $em->persist($city);
+                $em->persist($transportClass);
                 $em->flush();
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);
                 $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
             }
 
-            return $this->redirectToRoute('admin.city');
+            return $this->redirectToRoute('admin.transport-class');
         }
 
-        return $this->render('admin/city/new.html.twig', [
-            'city' => $city,
+        return $this->render('admin/transport-class/new.html.twig', [
+            'transport-class' => $transportClass,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/edit/{city}", name="admin.city.edit")
+     * @Route("/edit/{transportClass}", name="admin.transport-class.edit")
      *
      * @param Request $request
-     * @param City $city
+     * @param TransportClass $transportClass
      *
-     * @ParamConverter("city", class="AppBundle:City")
+     * @ParamConverter("transportClass", class="AppBundle:TransportClass")
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, City $city)
+    public function editAction(Request $request, TransportClass $transportClass)
     {
-        $deleteForm = $this->createDeleteForm($city);
-        $editForm = $this->createForm('AppBundle\Form\CityType', $city);
+        $deleteForm = $this->createDeleteForm($transportClass);
+        $editForm = $this->createForm('AppBundle\Form\TransportClassType', $transportClass);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -89,11 +89,11 @@ class CityController extends Controller
                 $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
             }
 
-            return $this->redirectToRoute('admin.city');
+            return $this->redirectToRoute('admin.transport-class');
         }
 
-        return $this->render('admin/city/edit.html.twig', [
-            'city' => $city,
+        return $this->render('admin/transport-class/edit.html.twig', [
+            'transportClass' => $transportClass,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ]);
@@ -101,25 +101,25 @@ class CityController extends Controller
 
 
     /**
-     * @Route("/delete/{city}", name="admin.city.delete")
+     * @Route("/delete/{transportClass}", name="admin.transport-class.delete")
      *
      * @param Request $request
-     * @param City $city
+     * @param TransportClass $transportClass
      *
-     * @ParamConverter("city", class="AppBundle:City")
+     * @ParamConverter("transportClass", class="AppBundle:TransportClass")
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, City $city)
+    public function deleteAction(Request $request, TransportClass $transportClass)
     {
-        $form = $this->createDeleteForm($city);
+        $form = $this->createDeleteForm($transportClass);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
             try {
-                $em->remove($city);
+                $em->remove($transportClass);
                 $em->flush();
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);
@@ -127,21 +127,21 @@ class CityController extends Controller
             }
         }
 
-        return $this->redirectToRoute('admin.city');
+        return $this->redirectToRoute('admin.transport-class');
     }
 
     /**
      * Creates a form to delete a page entity.
      *
-     * @param City $city
+     * @param TransportClass $transportClass
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    private function createDeleteForm(City $city)
+    private function createDeleteForm(TransportClass $transportClass)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin.city.delete', [
-                'city' => $city->getId()
+            ->setAction($this->generateUrl('admin.transport-class.delete', [
+                'transportClass' => $transportClass->getId()
             ]))
             ->setMethod('DELETE')
             ->getForm()

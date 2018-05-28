@@ -51,4 +51,101 @@ class TransportIntercity
     public function __construct()
     {
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCityFrom()
+    {
+        return $this->cityFrom;
+    }
+
+    /**
+     * @param mixed $cityFrom
+     */
+    public function setCityFrom($cityFrom)
+    {
+        $this->cityFrom = $cityFrom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCityIn()
+    {
+        return $this->cityIn;
+    }
+
+    /**
+     * @param mixed $cityIn
+     */
+    public function setCityIn($cityIn)
+    {
+        $this->cityIn = $cityIn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * @param mixed $class
+     */
+    public function setClass($class)
+    {
+        $this->class = $class;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceType()
+    {
+        return $this->priceType;
+    }
+
+    /**
+     * @param mixed $priceType
+     */
+    public function setPriceType($priceType)
+    {
+        $this->priceType = $priceType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
 }

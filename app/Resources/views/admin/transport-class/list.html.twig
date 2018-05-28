@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% include('admin/city/include/action.html.twig') %}
+{% include('admin/transport-class/include/action.html.twig') %}
 
 <h3>Список</h3>
 <div class="table-responsive">
@@ -15,16 +15,16 @@
             </tr>
         </thead>
         <tbody>
-        {% for city in citys %}
+        {% for transportClass in transportClasses %}
             <tr>
-                <td class="id">{{ city.id }}</td>
-                <td>{{ city.name }}</td>
-                <td class="action">
+                <td class="id">{{ transportClass.id }}</td>
+                <td>{{ transportClass.name }}</td>
+                <td  class="action">
 
-                    <a href="{{ path('admin.city.edit', { 'city': city.id }) }}" class="btn btn-outline-primary btn-sm ml-1">
+                    <a href="{{ path('admin.transport-class.edit', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-primary btn-sm ml-1">
                         Редактировать
                     </a>
-                    <a href="{{ path('admin.city.delete', { 'city': city.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                    <a href="{{ path('admin.transport-class.delete', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
                         Удалить
                     </a>
                 </td>
