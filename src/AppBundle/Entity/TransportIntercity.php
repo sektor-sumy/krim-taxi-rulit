@@ -8,7 +8,7 @@ use AppBundle\Entity\City;
 use AppBundle\Entity\TransportClass;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TransportIntercityRepository")
  * @ORM\Table(name="transport_intercity")
  */
 class TransportIntercity

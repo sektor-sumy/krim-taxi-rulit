@@ -39,7 +39,7 @@ class TransportIntercityType extends AbstractType
                 'choice_label' => 'name'
             ])
             ->add('priceType', TextType::class, ['label' => 'Тип цены','required'=>false])
-            ->add('price', IntegerType::class, ['label' => 'Цена'])
+            ->add('price', IntegerType::class, ['label' => 'Цена','required'=>false])
         ;
     }
 

@@ -22,6 +22,11 @@ class TransportClass
      */
     protected $name;
 
+    /**
+     * @ORM\Column(name="name_translate", type="string", nullable=true)
+     */
+    protected $nameTranslate;
+
     public function __construct()
     {
     }
@@ -58,4 +63,26 @@ class TransportClass
         $this->name = $name;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNameTranslate()
+    {
+        return $this->nameTranslate;
+    }
+
+    /**
+     * @param mixed $nameTranslate
+     */
+    public function setNameTranslate()
+    {
+        $transliterator = \Transliterator::create('Any-Latin');
+        $transliteratorToASCII = \Transliterator::create('Latin-ASCII');
+
+        $this->nameTranslate = $transliteratorToASCII->transliterate(
+            $transliterator->transliterate($this->getName())
+        );
+        $this->nameTranslate = preg_replace ("/^[^a-zA-Z\s]*$/","",$this->nameTranslate);
+
+    }
 }

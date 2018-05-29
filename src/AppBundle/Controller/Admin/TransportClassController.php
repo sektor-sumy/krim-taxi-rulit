@@ -31,8 +31,6 @@ class TransportClassController extends Controller
 
 
     /**
-     * Creates a new city entity.
-     *
      * @Route("/new", name="admin.transport-class.new")
      *
      * @param Request $request
@@ -49,6 +47,7 @@ class TransportClassController extends Controller
             $em = $this->getDoctrine()->getManager();
             $transportClass = $form->getData();
             try {
+                $transportClass->setNameTranslate();
                 $em->persist($transportClass);
                 $em->flush();
             } catch (\Exception $e) {
@@ -83,6 +82,7 @@ class TransportClassController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             try {
+                $transportClass->setNameTranslate();
                 $this->getDoctrine()->getManager()->flush();
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);

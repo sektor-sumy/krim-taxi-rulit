@@ -49,6 +49,7 @@ class CityController extends Controller
 
             $em = $this->get('doctrine.orm.entity_manager');
             try {
+                $city->setNameTranslate();
                 $em->persist($city);
                 $em->flush();
             } catch (\Exception $e) {
@@ -83,6 +84,7 @@ class CityController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             try {
+                $city->setNameTranslate();
                 $this->getDoctrine()->getManager()->flush();
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);
@@ -91,7 +93,6 @@ class CityController extends Controller
 
             return $this->redirectToRoute('admin.city');
         }
-
         return $this->render('admin/city/edit.html.twig', [
             'city' => $city,
             'edit_form' => $editForm->createView(),

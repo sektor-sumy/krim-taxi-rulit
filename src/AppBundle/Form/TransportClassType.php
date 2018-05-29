@@ -29,7 +29,7 @@ class TransportClassType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\TransportIntercity'
+            'data_class' => 'AppBundle\Entity\TransportClass'
         ]);
     }
 

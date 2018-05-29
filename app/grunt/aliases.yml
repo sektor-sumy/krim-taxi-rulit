@@ -3,7 +3,7 @@ default:
     - clean
     - mkdir
     - copy
-#    - less:dev_frontend
+    - less:dev_frontend
     - less:dev_backend
 #    - uglify
 #    - watch
