@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\TransportIntercity;
 
 class TransportIntercityRepository extends EntityRepository
 {
@@ -11,7 +12,7 @@ class TransportIntercityRepository extends EntityRepository
      */
     public function getAllActive()
     {
-        $query = $this->createQueryBuilder('c')
+        $query = $this->createQueryBuilder('')
             ->select('')
             ->getQuery();
 
@@ -23,10 +24,9 @@ class TransportIntercityRepository extends EntityRepository
      */
     public  function getClasses()
     {
-        $query = $this->createQueryBuilder('c')
-            ->select('c.class')
-            ->groupBy('c.class')
-            ->getQuery();
+        $query = $this->createQueryBuilder('p')
+            ->select('p.class')
+            ->groupBy('p.class')->getQuery();
 
         return $query->getArrayResult();
     }

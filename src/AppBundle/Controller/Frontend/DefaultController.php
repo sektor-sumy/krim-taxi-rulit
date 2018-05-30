@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller\Frontend;
 
+use AppBundle\Entity\City;
+use AppBundle\Entity\TransportClass;
 use AppBundle\Entity\TransportIntercity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,13 +18,16 @@ class DefaultController extends Controller
     {
         $transportIntercityes = $this->getDoctrine()->getRepository(TransportIntercity::class)->findAll();
 
-        $transportClasses = $this->getDoctrine()->getRepository(TransportIntercity::class)->getClasses();
+        $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->getByActiveTransportIntercity();
 
-        dump($transportClasses); die;
+        $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
+        $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
 
         return $this->render('frontend/homepage.html.twig', [
             'transportIntercityes' => $transportIntercityes,
-            'transportClasses' => $transportClasses
+            'transportClasses' => $transportClasses,
+            'cityFrom' => $cityFrom,
+            'cityIn' => $cityIn
         ]);
     }
 
