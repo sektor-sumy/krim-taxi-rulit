@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * @Route("/mesage")
+ * @Route("/message")
  */
 class MessageController extends Controller
 {
     /**
-     * @Route("/", name="admin.mesage")
+     * @Route("/", name="admin.message")
      */
     public function indexAction(Request $request)
     {
