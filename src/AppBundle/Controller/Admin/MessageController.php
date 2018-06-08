@@ -27,44 +27,44 @@ class MessageController extends Controller
         ]);
     }
 
-//
-//    /**
-//     * Creates a new city entity.
-//     *
-//     * @Route("/new", name="admin.city.new")
-//     *
-//     * @param Request $request
-//     *
-//     * @return RedirectResponse|Response
-//     */
-//    public function newAction(Request $request)
-//    {
-//        $city = new City();
-//        $form = $this->createForm('AppBundle\Form\CityType', $city);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $city = $form->getData();
-//
-//            $em = $this->get('doctrine.orm.entity_manager');
-//            try {
-//                $city->setNameTranslate();
-//                $em->persist($city);
-//                $em->flush();
-//            } catch (\Exception $e) {
-//                $this->get('logger')->error($e, ['exception' => $e]);
-//                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
-//            }
-//
-//            return $this->redirectToRoute('admin.city');
-//        }
-//
-//        return $this->render('admin/city/new.html.twig', [
-//            'city' => $city,
-//            'form' => $form->createView(),
-//        ]);
-//    }
+
+    /**
+     * Creates a new city entity.
+     *
+     * @Route("/new", name="admin.message.new")
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function newAction(Request $request)
+    {
+        $city = new Message();
+        $form = $this->createForm('AppBundle\Form\MessageType', $city);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $city = $form->getData();
+
+            $em = $this->get('doctrine.orm.entity_manager');
+            try {
+                $city->setNameTranslate();
+                $em->persist($city);
+                $em->flush();
+            } catch (\Exception $e) {
+                $this->get('logger')->error($e, ['exception' => $e]);
+                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
+            }
+
+            return $this->redirectToRoute('admin.city');
+        }
+
+        return $this->render('admin/city/new.html.twig', [
+            'city' => $city,
+            'form' => $form->createView(),
+        ]);
+    }
 //
 //    /**
 //     * @Route("/edit/{city}", name="admin.city.edit")

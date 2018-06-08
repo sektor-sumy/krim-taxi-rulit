@@ -1,39 +1,36 @@
-<div class="container"><!-- container -->
-    <div class="row"> <!-- outer row -->
-        <div class="col-md-10 col-md-offset-1"> <!-- col 10 with offset 1 to centered -->
-            <div class="row"> <!-- nested row -->
-
-                <!-- contact detail using col 4 -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
                 <div class="col-md-4">
                     <div class="contact-detail">
                         <i class="fa fa-map-marker"></i>
-                        <h4>г. Севастополь ул. Кирова д. 12в к.13</h4> <!-- address -->
-                        <h4>г. Сочи ул. Волжанина д.420 к.4</h4> <!-- address -->
+                        <h4>г. Севастополь</h4>
                     </div>
                 </div>
-                <!-- contact detail using col 4 -->
+
                 <div class="col-md-4">
                     <div class="contact-detail">
                         <i class="fa fa-envelope"></i>
-                        <h4>rudhisasmito@gmail.com</h4><!-- email add -->
+                        <h4>mail@gmail.com</h4>
                     </div>
                 </div>
 
-                <!-- contact detail using col 4 -->
                 <div class="col-md-4">
                     <div class="contact-detail">
                         <i class="fa fa-phone"></i>
-                        <h4>+7 154 947 55 49</h4> <!-- phone no. -->
-                        <h4>+7 484 159 87 43</h4> <!-- phone no. -->
+                        <h4>+7 999 111 11 11</h4>
+                        <h4>+7 888 222 22 22</h4>
                     </div>
                 </div>
 
-            </div> <!-- end nested row -->
-        </div> <!-- end col 10 with offset 1 to centered -->
-    </div><!-- end outer row -->
+            </div>
+        </div>
+    </div>
 
     <div class="row text-center"> <!-- contact form outer row with centered text-->
         <div class="col-md-10 col-md-offset-1"> <!-- col 10 with offset 1 to centered -->
+
             <form id="contact-form" class="form" name="sentMessage" novalidate> <!-- form wrapper -->
 
                 <div class="row"> <!-- nested inner row -->
@@ -41,7 +38,7 @@
                     <!-- Input your name -->
                     <div class="col-md-4">
                         <div class="form-group"> <!-- Your name input -->
-                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваше имя *" id="name" required data-validation-required-message="Пожалуйста введите Ваше имя">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваше имя *" id="contact-form-name" required data-validation-required-message="Пожалуйста введите Ваше имя">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -49,7 +46,7 @@
                     <!-- Input your email -->
                     <div class="col-md-4">
                         <div class="form-group"> <!-- Your email input -->
-                            <input type="email" autocomplete="off" class="form-control" placeholder="Ваш e-mail *" id="email" required data-validation-required-message="Пожалуйста введите Ваш e-mail">
+                            <input type="email" autocomplete="off" class="form-control" placeholder="Ваш e-mail *" id="contact-form-email" required data-validation-required-message="Пожалуйста введите Ваш e-mail">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -57,7 +54,7 @@
                     <!-- Input your Phone no. -->
                     <div class="col-md-4">
                         <div class="form-group"> <!-- Your email input -->
-                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваш номер телефона *" id="phone" required data-validation-required-message="Пожалуйста введите Ваш номер телефона">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваш номер телефона *" id="contact-form-phone" required data-validation-required-message="Пожалуйста введите Ваш номер телефона">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -66,14 +63,36 @@
 
                 <!-- Message Text area -->
                 <div class="form-group"> <!-- Your email input -->
-                    <textarea class="form-control" rows="7" placeholder="Ваше сообщение..." id="message" required data-validation-required-message="Вы не ввели сообщение"></textarea>
+                    <textarea class="form-control" rows="7" placeholder="Ваше сообщение..." id="contact-form-text" required data-validation-required-message="Вы не ввели сообщение"></textarea>
                     <p class="help-block text-danger"></p>
                     <div id="success"></div>
                 </div>
-                <button type="submit" class="btn btn-primary tf-btn color">Отправить</button> <!-- Send button -->
+                <button type="submit" class="btn btn-primary tf-btn color" onclick="sendMessage()">Отправить</button> <!-- Send button -->
 
             </form><!-- end form wrapper -->
         </div><!-- end col 10 with offset 1 to centered -->
     </div> <!-- end contact form outer row with centered text-->
 
 </div><!-- end container -->
+
+<script>
+    function sendMessage() {
+        var name = $('#contact-form-name');
+        var email = $('#contact-form-email');
+        var text = $('#contact-form-text');
+        var phone = $('#contact-form-phone');
+
+        console.log(name);
+        $.ajax({
+            url: "{{ path('api.message.new') }}",
+            method: "GET",
+            data: { name:name.val(), email:email.val(), text:text.val(), phone:phone.val() }
+        }).done(function() {
+            name.val('');
+            email.val('');
+            text.val('');
+            phone.val('');
+            alert( "Отправлено" );
+        })
+    }
+</script>

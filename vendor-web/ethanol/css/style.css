@@ -901,7 +901,7 @@ ul.metas li a { color: #e5b112 }
 /*********************************
 /* Map Section
 **********************************/
-#tf-contact { padding: 60px 0 }
+#tf-contact { padding: 20px 0 }
 #map {
     position: relative;
     width: 100%;
@@ -909,7 +909,7 @@ ul.metas li a { color: #e5b112 }
 }
 .contact-detail {
     text-align: center;
-    margin: 60px 0;
+    margin: 20px 0;
 }
 .contact-detail i.fa {
     text-align: center;

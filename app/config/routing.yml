@@ -7,6 +7,11 @@ app_backend:
     type: annotation
     prefix: /admin
 
+app_api:
+    resource: '@AppBundle/Controller/Api/'
+    type: annotation
+    prefix: /api
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

@@ -8,6 +8,7 @@ use AppBundle\Entity\TransportIntercity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Message;
 
 class DefaultController extends Controller
 {
@@ -23,11 +24,19 @@ class DefaultController extends Controller
         $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
         $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
 
+
+
+        $message = new Message();
+        $formMessage = $this->createForm('AppBundle\Form\MessageType', $message);
+        $formMessage->handleRequest($request);
+
+
         return $this->render('frontend/homepage.html.twig', [
             'transportIntercityes' => $transportIntercityes,
             'transportClasses' => $transportClasses,
             'cityFrom' => $cityFrom,
-            'cityIn' => $cityIn
+            'cityIn' => $cityIn,
+            'formMessage' => $formMessage->createView()
         ]);
     }
 
