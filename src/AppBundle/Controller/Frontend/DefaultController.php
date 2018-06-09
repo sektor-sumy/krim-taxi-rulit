@@ -25,21 +25,35 @@ class DefaultController extends Controller
         $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
 
 
-
-        $message = new Message();
-        $formMessage = $this->createForm('AppBundle\Form\MessageType', $message);
-        $formMessage->handleRequest($request);
-
-
         return $this->render('frontend/homepage.html.twig', [
             'transportIntercityes' => $transportIntercityes,
             'transportClasses' => $transportClasses,
             'cityFrom' => $cityFrom,
-            'cityIn' => $cityIn,
-            'formMessage' => $formMessage->createView()
+            'cityIn' => $cityIn
         ]);
     }
 
+
+    /**
+     * @Route("/price", name="frontend.price")
+     */
+    public function priceAction(Request $request)
+    {
+        $transportIntercityes = $this->getDoctrine()->getRepository(TransportIntercity::class)->findAll();
+
+        $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->getByActiveTransportIntercity();
+
+        $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
+        $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
+
+
+        return $this->render('frontend/price.html.twig', [
+            'transportIntercityes' => $transportIntercityes,
+            'transportClasses' => $transportClasses,
+            'cityFrom' => $cityFrom,
+            'cityIn' => $cityIn
+        ]);
+    }
 
     /**
      * @Route("/contact", name="frontend.contact")

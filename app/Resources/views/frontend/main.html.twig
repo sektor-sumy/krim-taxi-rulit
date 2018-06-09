@@ -44,7 +44,11 @@
 <body>
 {% include('frontend/include/header.html.twig') %}
 
-{% block content %}{% endblock %}
+{% block content %}
+
+
+    {% include('frontend/content/modal-callback.html.twig') %}
+{% endblock %}
 
 {% include('frontend/include/footer.html.twig') %}
 
@@ -66,13 +70,13 @@
 
 <!-- Parallax Effects -->
 <script type="text/javascript" src="js/skrollr.js"></script>
-<script type="text/javascript" src="js/imagesloaded.js"></script>
+{#<script type="text/javascript" src="js/imagesloaded.js"></script>#}
 
 <!-- Portfolio Filter -->
 <script type="text/javascript" src="js/jquery.isotope.js"></script>
 
 <!-- LightBox Nivo -->
-<script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
+{#<script type="text/javascript" src="js/nivo-lightbox.min.js"></script>#}
 
 <!-- Contact page-->
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
@@ -81,6 +85,7 @@
 <!-- Javascripts
 ================================================== -->
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="{{ asset('js/frontend.js') }}"></script>
 {% block javascript_vendor %}{% endblock %}
 </body>
 </html>

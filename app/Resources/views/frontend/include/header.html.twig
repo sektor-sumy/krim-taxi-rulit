@@ -4,14 +4,13 @@
             <div class="col-md-4 col-md-offset-8 text-right">
                 <div class="row">
                     <div style="float: right">
-                        <button class="btn btn-primary color btn-sm" style="margin: 7px; color: #000">
+                        <button class="btn btn-primary color btn-sm open-close-modal-callback" style="margin: 7px; color: #000">
                             Обратный звонок
                         </button>
                     </div>
 
-                    <div class="sn-phone" style="float: right; margin-right: 20px">
-                        <span class="sn-phone">
-                        +7 (951) 564-36-44</span>
+                    <div class="sn-phone">
+                        +7 (900) 000-00-00
                     </div>
                 </div>
             </div>
@@ -41,15 +40,14 @@
                 КРЫМ ТАКСИ РУЛИТ</span>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ path('frontend.main') }}">Главная</a></li>
-                <li><a href="#tf-services" class="scroll">Тарифы</a></li>
-                <li><a href="#tf-about" class="scroll">Аренда</a></li>
-                <li><a href="#tf-process" class="scroll">Отзывы</a></li>
+                <li><a href="{{ path('frontend.price') }}" class="scroll">Тарифы</a></li>
+                {#<li><a href="#tf-about" class="scroll">Аренда</a></li>#}
+                {#<li><a href="#tf-process" class="scroll">Отзывы</a></li>#}
                 <li><a href="{{ path('frontend.contact') }}">Контакты</a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>

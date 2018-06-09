@@ -5,10 +5,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MessageRepository")
- * @ORM\Table(name="message")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CallbackRepository")
+ * @ORM\Table(name="callback")
  */
-class Message
+class Callback
 {
     /**
      * @ORM\Id
@@ -21,21 +21,10 @@ class Message
      * @ORM\Column(name="name", type="string", nullable=true)
      */
     protected $name;
-
-    /**
-     * @ORM\Column(name="email", type="string", nullable=true)
-     */
-    protected $email;
-
     /**
      * @ORM\Column(name="phone", type="string", nullable=false)
      */
     protected $phone;
-
-    /**
-     * @ORM\Column(name="text", type="text", nullable=false)
-     */
-    protected $text;
 
     /**
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
@@ -93,22 +82,6 @@ class Message
     /**
      * @return mixed
      */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getPhone()
     {
         return $this->phone;
@@ -120,22 +93,6 @@ class Message
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
-     * @param mixed $text
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
     }
 
     /**

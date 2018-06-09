@@ -2,8 +2,7 @@
 
 namespace AppBundle\Controller\Admin;
 
-use AppBundle\Entity\Message;
-use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Callback;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,77 +14,77 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
+
 /**
- * @Route("/message")
+ * @Route("/callback")
  */
-class MessageController extends Controller
+class CallbackController extends Controller
 {
     /**
-     * @Route("/", name="admin.message")
+     * @Route("/", name="admin.callback")
      */
     public function indexAction(Request $request)
     {
-        $messages = $this->getDoctrine()->getRepository(Message::class)->findAllOrderByCreatedAt();//findBy(['removedAt'=>''], ['createdAt' => 'DESC']);
+        $callbacks = $this->getDoctrine()->getRepository(Callback::class)->findAllOrderByCreatedAt();//findBy(['removedAt'=>''], ['createdAt' => 'DESC']);
 
-        return $this->render('admin/message/list.html.twig', [
-            'messages' => $messages,
+        return $this->render('admin/callback/list.html.twig', [
+            'callbacks' => $callbacks,
         ]);
     }
 
     /**
-     * @Route("/viewed/{message}", name="admin.message.viewed")
+     * @Route("/viewed/{callback}", name="admin.callback.viewed")
      *
      * @param Request $request
-     * @param Message $message
+     * @param Callback $callback
      *
-     * @ParamConverter("message", class="AppBundle:Message")
+     * @ParamConverter("callback", class="AppBundle:Callback")
      *
      * @return RedirectResponse
      */
-    public function viewedAction(Request $request, Message $message)
+    public function viewedAction(Request $request, Callback $callback)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message->setViewedAt(true);
+        $callback->setViewedAt(true);
         try {
-            $em->persist($message);
+            $em->persist($callback);
             $em->flush();
         } catch (\Exception $e) {
             $this->get('logger')->error($e, ['exception' => $e]);
             $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
         }
 
-        return $this->redirectToRoute('admin.message');
+        return $this->redirectToRoute('admin.callback');
     }
 
     /**
-     * @Route("/delete/{message}", name="admin.message.delete")
+     * @Route("/delete/{callback}", name="admin.callback.delete")
      *
      * @param Request $request
-     * @param Message $message
+     * @param Callback $callback
      *
-     * @ParamConverter("message", class="AppBundle:Message")
+     * @ParamConverter("callback", class="AppBundle:Callback")
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, Message $message)
+    public function deleteAction(Request $request, Callback $callback)
     {
         $em = $this->getDoctrine()->getManager();
 
         try {
-            $em->remove($message);
+            $em->remove($callback);
             $em->flush();
         } catch (\Exception $e) {
             $this->get('logger')->error($e, ['exception' => $e]);
             $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
         }
 
-        return $this->redirectToRoute('admin.message');
+        return $this->redirectToRoute('admin.callback');
     }
 
-
     /**
-     * @Rest\Get("/count-new", name="api.message.count.new")
+     * @Rest\Get("/count-new", name="api.callback.count.new")
      *
      * @param Request $request
      *
@@ -93,9 +92,8 @@ class MessageController extends Controller
      */
     public function getCountNewAction(Request $request)
     {
-        $count = $this->getDoctrine()->getRepository(Message::class)->getCountNew();
+        $count = $this->getDoctrine()->getRepository(Callback::class)->getCountNew();
 
         return new JsonResponse(['count'=>$count[0][1]]);
     }
-
 }

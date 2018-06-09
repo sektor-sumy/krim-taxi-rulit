@@ -1,6 +1,6 @@
 $(function() {
 
-    $("input,textarea").jqBootstrapValidation({
+    $("#contact-form input,textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -8,23 +8,23 @@ $(function() {
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var phone = $("input#phone").val();
-            var message = $("textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
+            var name = $("input#contact-form-name").val();
+            var email = $("input#contact-form-email").val();
+            var phone = $("input#contact-form-phone").val();
+            var message = $("textarea#contact-form-text").val();
+            var firstName = name;
+
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "../submit.php",
-                type: "POST",
+                url: "/api/message/new",
+                type: "GET",
                 data: {
                     name: name,
                     phone: phone,
                     email: email,
-                    message: message
+                    text: message
                 },
                 cache: false,
                 success: function() {
@@ -33,7 +33,7 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>Ваше сообщение было отправлено. </strong>");
                     $('#success > .alert-success')
                         .append('</div>');
 
@@ -45,7 +45,7 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                    $('#success > .alert-danger').append("<strong>Ивините " + firstName + ", возникла ошибка. Пожалуйста попробуйте позже!");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contact-form').trigger("reset");
@@ -56,6 +56,61 @@ $(function() {
             return $(this).is(":visible");
         },
     });
+
+    $("#modal-callback input,textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            event.preventDefault(); // prevent default submit behaviour
+            // get values from FORM
+            var name = $("input#modal-callback-name").val();
+            var phone = $("input#modal-callback-phone").val();
+            var firstName = name;
+
+            if (firstName.indexOf(' ') >= 0) {
+                firstName = name.split(' ').slice(0, -1).join(' ');
+            }
+            $.ajax({
+                url: "/api/callback/new",
+                type: "GET",
+                data: {
+                    name: name,
+                    phone: phone,
+                },
+                cache: false,
+                success: function() {
+                    // Success message
+                    $('#success').html("<div class='alert alert-success'>");
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#success > .alert-success')
+                        .append("<strong>Ваше сообщение было отправлено. </strong>");
+                    $('#success > .alert-success')
+                        .append('</div>');
+
+                    //clear all fields
+                    $('#contact-form').trigger("reset");
+                },
+                error: function() {
+                    // Fail message
+                    $('#success').html("<div class='alert alert-danger'>");
+                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#success > .alert-danger').append("<strong>Ивините " + firstName + ", возникла ошибка. Пожалуйста попробуйте позже!");
+                    $('#success > .alert-danger').append('</div>');
+                    //clear all fields
+                    $('#contact-form').trigger("reset");
+                },
+            })
+        },
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
+
+
 
     $("a[data-toggle=\"tab\"]").click(function(e) {
         e.preventDefault();

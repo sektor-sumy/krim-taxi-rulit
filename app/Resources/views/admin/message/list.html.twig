@@ -19,21 +19,22 @@
         </thead>
         <tbody>
         {% for message in messages %}
-            <tr>
+            <tr {% if message.viewedAt == false %} class="not-view" {% endif %}>
                 <td class="id">{{ message.id }}</td>
                 <td>{{ message.name }}</td>
                 <td>{{ message.phone }}</td>
                 <td>{{ message.email }}</td>
                 <td>{{ message.text }}</td>
-                {#<td class="action">#}
-
-                    {#<a href="{{ path('admin.city.edit', { 'city': city.id }) }}" class="btn btn-outline-primary btn-sm ml-1">#}
-                        {#Редактировать#}
-                    {#</a>#}
-                    {#<a href="{{ path('admin.city.delete', { 'city': city.id }) }}" class="btn btn-outline-danger btn-sm ml-1">#}
-                        {#Удалить#}
-                    {#</a>#}
-                {#</td>#}
+                <td class="action">
+                    {% if message.viewedAt == false %}
+                        <a href="{{ path('admin.message.viewed', { 'message': message.id }) }}" class="btn btn-outline-success btn-sm ml-1">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    {% endif %}
+                    <a href="{{ path('admin.message.delete', { 'message': message.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

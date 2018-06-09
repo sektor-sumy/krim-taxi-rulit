@@ -43,7 +43,8 @@ body {
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  background-color: #31373e;
+  color: #fff;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -96,6 +97,12 @@ body {
 
 table.admin-control {
   border-bottom: 1px solid #000;
+  & .not-view {
+    background: #b1ffbf;
+    &:hover {
+      background: #b1ffbf;
+    }
+  }
   & .id {
     width: 50px;
     text-align: center;
@@ -111,4 +118,8 @@ table.admin-control {
     color: #8c8c8c;
     font-size: 0.8em;
   }
+}
+
+.invisible {
+  opacity: 0;
 }

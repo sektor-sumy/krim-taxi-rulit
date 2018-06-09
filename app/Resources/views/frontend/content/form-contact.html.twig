@@ -73,26 +73,4 @@
         </div><!-- end col 10 with offset 1 to centered -->
     </div> <!-- end contact form outer row with centered text-->
 
-</div><!-- end container -->
-
-<script>
-    function sendMessage() {
-        var name = $('#contact-form-name');
-        var email = $('#contact-form-email');
-        var text = $('#contact-form-text');
-        var phone = $('#contact-form-phone');
-
-        console.log(name);
-        $.ajax({
-            url: "{{ path('api.message.new') }}",
-            method: "GET",
-            data: { name:name.val(), email:email.val(), text:text.val(), phone:phone.val() }
-        }).done(function() {
-            name.val('');
-            email.val('');
-            text.val('');
-            phone.val('');
-            alert( "Отправлено" );
-        })
-    }
-</script>
+</div>
