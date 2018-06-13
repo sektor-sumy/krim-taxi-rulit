@@ -1,5 +1,7 @@
 {% extends 'admin/main.html.twig' %}
 
+{% block title %}Обратные звонки - Список{% endblock %}
+
 {% block content %}
 
 {% include('admin/callback/include/action.html.twig') %}
@@ -23,11 +25,11 @@
                 <td>{{ callback.phone }}</td>
                 <td class="action">
                     {% if callback.viewedAt == false %}
-                        <a href="{{ path('admin.callback.viewed', { 'callback': callback.id }) }}" class="btn btn-outline-success btn-sm ml-1">
+                        <a href="{{ path('admin.callback.viewed', { 'callback': callback.id }) }}" class="btn btn-outline-success btn-sm ml-1" title="Просмотрено">
                             <i class="fas fa-check"></i>
                         </a>
                     {% endif %}
-                    <a href="{{ path('admin.callback.delete', { 'callback': callback.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                    <a href="{{ path('admin.callback.delete', { 'callback': callback.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>

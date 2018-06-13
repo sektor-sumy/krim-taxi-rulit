@@ -77,31 +77,23 @@ $(function() {
                 type: "GET",
                 data: {
                     name: name,
-                    phone: phone,
+                    phone: phone
                 },
                 cache: false,
                 success: function() {
-                    // Success message
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-success')
-                        .append("<strong>Ваше сообщение было отправлено. </strong>");
-                    $('#success > .alert-success')
-                        .append('</div>');
-
-                    //clear all fields
-                    $('#contact-form').trigger("reset");
+                    $('#modal-callback').trigger("reset");
+                    var overlay =  $('.nivo-lightbox-overlay');
+                        overlay.removeClass('nivo-lightbox-open');
+                        overlay.addClass('nivo-lightbox-close');
                 },
                 error: function() {
-                    // Fail message
-                    $('#success').html("<div class='alert alert-danger'>");
-                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                    $('#modal-callback').html("<div class='alert alert-danger'>");
+                    $('#modal-callback > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Ивините " + firstName + ", возникла ошибка. Пожалуйста попробуйте позже!");
-                    $('#success > .alert-danger').append('</div>');
+                    $('#modal-callback > .alert-danger').append("<strong>Ивините " + firstName + ", возникла ошибка. Пожалуйста попробуйте позже!");
+                    $('#modal-callback > .alert-danger').append('</div>');
                     //clear all fields
-                    $('#contact-form').trigger("reset");
+                    $('#modal-callback').trigger("reset");
                 },
             })
         },

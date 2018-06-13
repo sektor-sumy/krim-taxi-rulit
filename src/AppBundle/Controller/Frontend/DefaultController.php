@@ -22,8 +22,8 @@ class DefaultController extends Controller
         $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->getByActiveTransportIntercity();
 
         $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
-        $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
-
+        $cityIn = $this->getDoctrine()->getRepository(City::class)->getInByActiveTransportIntercity();
+//dump($cityIn); die;
 
         return $this->render('frontend/homepage.html.twig', [
             'transportIntercityes' => $transportIntercityes,

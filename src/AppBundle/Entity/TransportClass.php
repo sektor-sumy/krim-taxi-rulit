@@ -27,8 +27,14 @@ class TransportClass
      */
     protected $nameTranslate;
 
+    /**
+     * @ORM\Column(name="priority", type="integer", nullable=true, options={"default":0})
+     */
+    protected $priority;
+
     public function __construct()
     {
+
     }
 
     /**
@@ -85,4 +91,22 @@ class TransportClass
         $this->nameTranslate = preg_replace ("/^[^a-zA-Z\s]*$/","",$this->nameTranslate);
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param mixed $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+
 }

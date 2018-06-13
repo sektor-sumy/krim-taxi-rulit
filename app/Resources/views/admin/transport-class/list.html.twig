@@ -1,5 +1,7 @@
 {% extends 'admin/main.html.twig' %}
 
+{% block title %}Классы транспорта - Список{% endblock %}
+
 {% block content %}
 
 {% include('admin/transport-class/include/action.html.twig') %}
@@ -11,6 +13,7 @@
             <tr>
                 <th class="id">id</th>
                 <th>Название</th>
+                <th>Приоритет</th>
                 <th class="action">Настройки</th>
             </tr>
         </thead>
@@ -19,12 +22,13 @@
             <tr>
                 <td class="id">{{ transportClass.id }}</td>
                 <td>{{ transportClass.name }}</td>
+                <td>{{ transportClass.priority }}</td>
                 <td  class="action">
 
-                    <a href="{{ path('admin.transport-class.edit', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-primary btn-sm ml-1">
+                    <a href="{{ path('admin.transport-class.edit', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <a href="{{ path('admin.transport-class.delete', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                    <a href="{{ path('admin.transport-class.delete', { 'transportClass': transportClass.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>
@@ -33,5 +37,8 @@
         </tbody>
     </table>
 </div>
+
+
+{% include('admin/transport-class/include/info.html.twig') %}
 
 {% endblock %}

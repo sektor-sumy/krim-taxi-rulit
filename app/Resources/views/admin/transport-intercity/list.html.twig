@@ -1,5 +1,7 @@
 {% extends 'admin/main.html.twig' %}
 
+{% block title %}Межгородской транспорт - Список{% endblock %}
+
 {% block content %}
 
 {% include('admin/transport-intercity/include/action.html.twig') %}
@@ -29,10 +31,10 @@
                 <td>{{ transportIntercity.price }}</td>
                 <td  class="action">
 
-                    <a href="{{ path('admin.transport-intercity.edit', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-primary btn-sm ml-1">
+                    <a href="{{ path('admin.transport-intercity.edit', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <a href="{{ path('admin.transport-intercity.delete', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                    <a href="{{ path('admin.transport-intercity.delete', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>

@@ -15,9 +15,9 @@ class TransportClassRepository extends EntityRepository
         $query = $this->createQueryBuilder('p')
             ->select('p')
             ->leftJoin(TransportIntercity::class,'transport', 'WITH', 'transport.class = p.id')
+            ->orderBy('p.priority','ASC')
             ->distinct()
             ->getQuery();
-//        dump($query); die;
 
         return $query->getArrayResult();
     }

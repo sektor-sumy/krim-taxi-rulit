@@ -1,5 +1,7 @@
 {% extends 'admin/main.html.twig' %}
 
+{% block title %}Сообщения{% endblock %}
+
 {% block content %}
 
 {% include('admin/message/include/action.html.twig') %}
@@ -27,11 +29,11 @@
                 <td>{{ message.text }}</td>
                 <td class="action">
                     {% if message.viewedAt == false %}
-                        <a href="{{ path('admin.message.viewed', { 'message': message.id }) }}" class="btn btn-outline-success btn-sm ml-1">
+                        <a href="{{ path('admin.message.viewed', { 'message': message.id }) }}" class="btn btn-outline-success btn-sm ml-1" title="Просмотрено">
                             <i class="fas fa-check"></i>
                         </a>
                     {% endif %}
-                    <a href="{{ path('admin.message.delete', { 'message': message.id }) }}" class="btn btn-outline-danger btn-sm ml-1">
+                    <a href="{{ path('admin.message.delete', { 'message': message.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
                         <i class="fas fa-times"></i>
                     </a>
                 </td>

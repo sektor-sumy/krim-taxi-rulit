@@ -1,5 +1,7 @@
 {% extends 'admin/main.html.twig' %}
 
+{% block title %}Классы транспорта - Редактирование{% endblock %}
+
 {% block content %}
 
 {% include('admin/transport-class/include/action.html.twig') %}
@@ -11,6 +13,10 @@
         <div class="form-group">
             {{ form_label(edit_form.name) }}
             {{ form_widget(edit_form.name, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.priority) }}
+            {{ form_widget(edit_form.priority, {'attr':{'class':'form-control'}}) }}
         </div>
         <input class="btn btn-success btn-sm" type="submit" value="Сохранить" />
     </div>

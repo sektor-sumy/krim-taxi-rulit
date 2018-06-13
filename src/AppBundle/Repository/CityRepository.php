@@ -14,10 +14,10 @@ class CityRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->select('p')
-            ->leftJoin(TransportIntercity::class,'transport', 'WITH', 'transport.cityFrom = p.id')
+            ->innerJoin(TransportIntercity::class,'transport', 'WITH', 'transport.cityFrom = p.id')
+            ->orderBy('p.name','ASC')
             ->distinct()
             ->getQuery();
-//        dump($query); die;
 
         return $query->getArrayResult();
     }
@@ -26,10 +26,10 @@ class CityRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->select('p')
-            ->leftJoin(TransportIntercity::class,'transport', 'WITH', 'transport.cityIn = p.id')
+            ->innerJoin(TransportIntercity::class,'transport', 'WITH', 'transport.cityIn = p.id')
+            ->orderBy('p.name','ASC')
             ->distinct()
             ->getQuery();
-//        dump($query); die;
 
         return $query->getArrayResult();
     }
