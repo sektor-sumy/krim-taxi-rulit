@@ -15,7 +15,9 @@
 !var/SymfonyRequirements.php
 /vendor/
 /vendor-web/
+!/vendor-web/ethanol
 /node-modules/
 /tests/
-.idea/*
 composer.lock
+.idea/
+web/

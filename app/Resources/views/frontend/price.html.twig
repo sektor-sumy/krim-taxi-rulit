@@ -1,0 +1,14 @@
+{% extends 'frontend/main.html.twig' %}
+
+{% block content %}
+    {% include 'frontend/content/table-transport-intercity.html.twig' %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block javascript_vendor %}
+    {{ parent() }}
+    <script>
+        $('a[href="#transport-class-{{ transportClasses[0].nameTranslate }}"]').tab('show')
+    </script>
+{% endblock %}

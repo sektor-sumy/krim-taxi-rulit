@@ -4,6 +4,11 @@ main:
       except: [ "jQuery", "Backbone" ]
     sourceMap: false
     beautify: true
+  files:
+    web/js/frontend.js:
+      - app/Resources/js/frontend/**/*.js
+    web/admin/js/backend.js:
+      - app/Resources/js/backend/**/*.js
 #  files:
 #    web/js/backend.js:
 #      - app/Resources/js/backend/**/*.js

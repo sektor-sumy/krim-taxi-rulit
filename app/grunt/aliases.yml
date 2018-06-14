@@ -5,7 +5,7 @@ default:
     - copy
     - less:dev_frontend
     - less:dev_backend
-#    - uglify
+    - uglify
 #    - watch
 
 prod:

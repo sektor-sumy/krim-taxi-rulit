@@ -1,0 +1,47 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Межгородской транспорт - Список{% endblock %}
+
+{% block content %}
+
+{% include('admin/transport-intercity/include/action.html.twig') %}
+
+<h3>Список</h3>
+<div class="table-responsive">
+    <table class="table table-hover admin-control">
+        <thead class="thead-dark">
+            <tr>
+                <th class="id">id</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Класс</th>
+                <th>Тип цены</th>
+                <th>Цена</th>
+                <th class="action">Настройки</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transportIntercity in transportIntercityes %}
+            <tr>
+                <td class="id">{{ transportIntercity.id }}</td>
+                <td>{{ transportIntercity.cityFrom.name }}</td>
+                <td>{{ transportIntercity.cityIn.name }}</td>
+                <td>{{ transportIntercity.class.name }}</td>
+                <td>{{ transportIntercity.priceType }}</td>
+                <td>{{ transportIntercity.price }}</td>
+                <td  class="action">
+
+                    <a href="{{ path('admin.transport-intercity.edit', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <a href="{{ path('admin.transport-intercity.delete', { 'transportIntercity': transportIntercity.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

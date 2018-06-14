@@ -1,0 +1,48 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Межгородской транспорт - Редактирование{% endblock %}
+
+{% block content %}
+
+{% include('admin/transport-intercity/include/action.html.twig') %}
+
+<h2>Редактирование</h2>
+<div class="table-responsive">
+    {{ form_start(edit_form) }}
+    <div class="box-body">
+        <div class="form-group">
+            {{ form_label(edit_form.cityFrom) }}
+            {{ form_widget(edit_form.cityFrom, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.cityIn) }}
+            {{ form_widget(edit_form.cityIn, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.class) }}
+            {{ form_widget(edit_form.class, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.priceType) }}
+            {{ form_widget(edit_form.priceType, {'attr':{'class':'form-control'}}) }}
+            <span class="comment">* оставить путым если цена фиксированная. Пример: договорная, по записи и т.д.</span>
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.price) }}
+            {{ form_widget(edit_form.price, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <input class="btn btn-success btn-sm" type="submit" value="Сохранить" />
+    </div>
+    {{ form_end(edit_form) }}
+</div>
+
+{% endblock %}
+
+{% block javascript_vendor %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('select.form-control').select2();
+        });
+    </script>
+{% endblock %}

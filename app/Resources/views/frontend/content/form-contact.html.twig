@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-detail">
+                        <i class="fa fa-map-marker"></i>
+                        <h4>г. Севастополь</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-detail">
+                        <i class="fa fa-envelope"></i>
+                        <h4>mail@gmail.com</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-detail">
+                        <i class="fa fa-phone"></i>
+                        <h4>+7 999 111 11 11</h4>
+                        <h4>+7 888 222 22 22</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center"> <!-- contact form outer row with centered text-->
+        <div class="col-md-10 col-md-offset-1"> <!-- col 10 with offset 1 to centered -->
+
+            <form id="contact-form" class="form" name="sentMessage" novalidate> <!-- form wrapper -->
+
+                <div class="row"> <!-- nested inner row -->
+
+                    <!-- Input your name -->
+                    <div class="col-md-4">
+                        <div class="form-group"> <!-- Your name input -->
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваше имя *" id="contact-form-name" required data-validation-required-message="Пожалуйста введите Ваше имя">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <!-- Input your email -->
+                    <div class="col-md-4">
+                        <div class="form-group"> <!-- Your email input -->
+                            <input type="email" autocomplete="off" class="form-control" placeholder="Ваш e-mail *" id="contact-form-email" required data-validation-required-message="Пожалуйста введите Ваш e-mail">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <!-- Input your Phone no. -->
+                    <div class="col-md-4">
+                        <div class="form-group"> <!-- Your email input -->
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Ваш номер телефона *" id="contact-form-phone" required data-validation-required-message="Пожалуйста введите Ваш номер телефона">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                </div><!-- end nested inner row -->
+
+                <!-- Message Text area -->
+                <div class="form-group"> <!-- Your email input -->
+                    <textarea class="form-control" rows="7" placeholder="Ваше сообщение..." id="contact-form-text" required data-validation-required-message="Вы не ввели сообщение"></textarea>
+                    <p class="help-block text-danger"></p>
+                    <div id="success"></div>
+                </div>
+                <button type="submit" class="btn btn-primary tf-btn color" onclick="sendMessage()">Отправить</button> <!-- Send button -->
+
+            </form><!-- end form wrapper -->
+        </div><!-- end col 10 with offset 1 to centered -->
+    </div> <!-- end contact form outer row with centered text-->
+
+</div>

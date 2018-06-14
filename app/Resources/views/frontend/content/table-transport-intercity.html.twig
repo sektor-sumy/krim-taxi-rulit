@@ -1,0 +1,56 @@
+<div class="container">
+    <ul class="nav nav-tabs custom-tabs" role="tablist">
+        {% for transportClass in transportClasses %}
+            <li role="presentation">
+                <a href="#transport-class-{{ transportClass.nameTranslate }}" aria-controls="home" role="tab" data-toggle="tab">
+                    {{ transportClass.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+        {% for transportClass in transportClasses %}
+            <div role="tabpanel" class="tab-pane fade" id="transport-class-{{ transportClass.nameTranslate }}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Откуда/Куда</th>
+                        {% for city in cityIn %}
+                            <th>
+                                {{ city.name }}
+                            </th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for city_from in cityFrom %}
+                        <tr>
+                            <td>
+                                {{ city_from.name }}
+                            </td>
+                            {% for city_in in cityIn %}
+                                <td>
+                                    {% if city_in != city_from %}
+                                        {% for transport in transportIntercityes %}
+                                            {% if transport.cityFrom.id == city_from.id and transport.cityIn.id == city_in.id and transport.class.id == transportClass.id %}
+                                                {% if transport.priceType %}
+                                                    {{ transport.priceType }}
+                                                {% else %}
+                                                    {{ transport.price }}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+</div>

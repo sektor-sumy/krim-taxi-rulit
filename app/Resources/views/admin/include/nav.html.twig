@@ -1,0 +1,73 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Фид</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.callback') == app.request.pathinfo|slice(0,path('admin.callback')|length)  %} active {% endif %}"
+                   href="{{ path('admin.callback') }}">
+                    <i class="fas fa-phone"></i>
+                    Обратные звонки <span id="nav-badge-callback" class="badge badge-pill badge-success invisible">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.message') == app.request.pathinfo|slice(0,path('admin.message')|length)  %} active {% endif %}"
+                   href="{{ path('admin.message') }}">
+                    <i class="fas fa-envelope"></i>
+                    Сообщения <span id="nav-badge-message" class="badge badge-pill badge-success invisible">0</span>
+                </a>
+            </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Управление</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.transport-intercity') == app.request.pathinfo|slice(0,path('admin.transport-intercity')|length)  %} active {% endif %}"
+                   href="{{ path('admin.transport-intercity') }}">
+                    <i class="fas fa-exchange-alt"></i>
+                    Межгород
+                </a>
+            </li>
+            {#<li class="nav-item">#}
+                {#<a class="nav-link" href="#">#}
+                    {#<span data-feather="layers"></span>#}
+                    {#<i class="fas fa-retweet"></i>#}
+                    {#Городские перевозки#}
+                {#</a>#}
+            {#</li>#}
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Входные параметры</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.city') == app.request.pathinfo|slice(0,path('admin.city')|length)  %} active {% endif %}"
+                   href="{{ path('admin.city') }}">
+                    <i class="fas fa-building"></i>
+                    Города
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.transport-class') == app.request.pathinfo|slice(0,path('admin.transport-class')|length)  %} active {% endif %}"
+                   href="{{ path('admin.transport-class') }}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Классы транспорта
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+
+
+</script>
