@@ -41,6 +41,7 @@ class MessageController extends Controller
         try {
             $em->persist($message);
             $em->flush();
+            $stat = $this->get('app.service.email_notification')->sendAdminNotificationMessage($message);
         } catch (\Exception $e) {
             dump($e); die;
             return Response::HTTP_NO_CONTENT;
