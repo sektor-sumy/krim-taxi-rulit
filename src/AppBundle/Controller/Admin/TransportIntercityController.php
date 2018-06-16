@@ -114,16 +114,14 @@ class TransportIntercityController extends Controller
         $form = $this->createDeleteForm($transportIntercity);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-            try {
-                $em->remove($transportIntercity);
-                $em->flush();
-            } catch (\Exception $e) {
-                $this->get('logger')->error($e, ['exception' => $e]);
-                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
-            }
+        try {
+            $em->remove($transportIntercity);
+            $em->flush();
+        } catch (\Exception $e) {
+            $this->get('logger')->error($e, ['exception' => $e]);
+            $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
         }
 
         return $this->redirectToRoute('admin.transport-intercity');

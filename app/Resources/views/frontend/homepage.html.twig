@@ -16,20 +16,29 @@
 
 
 <div class="row">
-<div id="tf-works">
-    <div class="container">
-        <div class="section-header">
-            <h2>Межгородские <span class="highlight"><strong>перевозки</strong></span></h2>
-            <h5><em>Все цены указаны в рублях</em></h5>
+    <div id="tf-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Межгородские <span class="highlight"><strong>перевозки</strong></span></h2>
+                <h5><em>Все цены указаны в рублях</em></h5>
+            </div>
+        </div>
+        {% include 'frontend/content/table-transport-intercity.html.twig' %}
+    </div>
+
+    <div id="tf-auto">
+        <div class="container">
+            <div class="section-header">
+                <h2>Заказать <span class="highlight"><strong>автомобиль</strong></span></h2>
+                <h5><em>Все цены указаны в рублях</em></h5>
+            </div>
+        </div>
+        <div class="container">
+        sda
         </div>
     </div>
-    {% include 'frontend/content/table-transport-intercity.html.twig' %}
-</div>
-
-
 
     <div id="tf-contact">
-
         <div class="container"> <!-- container -->
             <div class="section-header">
                 <h2>Остались вопросы? <span class="highlight"><strong>Свяжитесь с нами!</strong></span></h2>
@@ -37,56 +46,8 @@
                 {#<div class="fancy"><span><img src="img/favicon.ico" alt="..."></span></div>#}
             </div>
         </div><!-- end container -->
-
         {% include 'frontend/content/form-contact.html.twig' %}
-
     </div>
-
-
-    {#<div id="tf-reverse-call">#}
-
-        {#<div class="container"> <!-- container -->#}
-            {#<div class="section-header">#}
-                {#<h2>Обратный <span class="highlight"><strong>звонок</strong></span></h2>#}
-                {#<h5><em>Мы проконсультируем вас и поможем выбрать услугу</em></h5>#}
-                {#<div class="fancy"><span><img src="img/favicon.ico" alt="..."></span></div>#}
-            {#</div>#}
-        {#</div><!-- end container -->#}
-
-        {#<div class="container"><!-- container -->#}
-            {#<div class="row text-center"> <!-- contact form outer row with centered text-->#}
-                {#<div class="col-md-10 col-md-offset-1"> <!-- col 10 with offset 1 to centered -->#}
-                    {#<form id="contact-form" class="form" name="sentMessage" novalidate> <!-- form wrapper -->#}
-
-                        {#<div class="row"> <!-- nested inner row -->#}
-
-                            {#<!-- Input your name -->#}
-                            {#<div class="col-md-4 col-md-offset-1">#}
-                                {#<div class="form-group"> <!-- Your name input -->#}
-                                    {#<input type="text" autocomplete="off" class="form-control" placeholder="Ваше имя *" id="name" required data-validation-required-message="Please enter your name.">#}
-                                    {#<p class="help-block text-danger"></p>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<!-- Input your Phone no. -->#}
-                            {#<div class="col-md-4">#}
-                                {#<div class="form-group"> <!-- Your email input -->#}
-                                    {#<input type="text" autocomplete="off" class="form-control" placeholder="Ваш номер телефона *" id="phone" required data-validation-required-message="Please enter your phone no.">#}
-                                    {#<p class="help-block text-danger"></p>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="col-md-2">#}
-                            {#<button type="submit" class="btn btn-primary tf-btn color">Отправить</button> <!-- Send button -->#}
-                            {#</div>#}
-
-                        {#</div><!-- end nested inner row -->#}
-
-                    {#</form>#}
-                {#</div>#}
-            {#</div>#}
-
-        {#</div>#}
-
-    {#</div>#}
     {{ parent() }}
 {% endblock %}
 

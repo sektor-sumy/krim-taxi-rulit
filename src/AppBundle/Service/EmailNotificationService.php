@@ -60,9 +60,8 @@ class EmailNotificationService
             if ($admin->hasRole('ROLE_SUPER_ADMIN'))
             {
                 $messageToMail = (new \Swift_Message('Новое сообщение [krim-rulit-taxi.ru]'))
-                    ->setFrom('send@example.com')
-//            ->setTo($admin[0])
-                    ->setTo('vasyavakulo765@gmail.com')
+                    ->setFrom('message@krim-rulit-taxi.ru')
+                    ->setTo('krimrulit.taxi@gmail.com')
                     ->setBody(
                         $this->templating->render('email/admin/notification.message.html.twig', [
                             'message' => $message,
@@ -86,9 +85,8 @@ class EmailNotificationService
             if ($admin->hasRole('ROLE_SUPER_ADMIN'))
             {
                 $messageToMail = (new \Swift_Message('Обратный звонок [krim-rulit-taxi.ru]'))
-                    ->setFrom('send@example.com')
-//            ->setTo($admin[0])
-                    ->setTo('vasyavakulo765@gmail.com')
+                    ->setFrom('callback@krim-rulit-taxi.ru')
+                    ->setTo('krimrulit.taxi@gmail.com')
                     ->setBody(
                         $this->templating->render('email/admin/notification.callback.html.twig', [
                             'callback' => $callback,
