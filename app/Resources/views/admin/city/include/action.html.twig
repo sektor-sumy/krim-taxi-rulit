@@ -10,7 +10,7 @@
     </div>
 </div>
 
-{% if errorMessage != '' %}
+{% if errorMessage|default('') != '' %}
     <div class="alert alert-danger" role="alert">
         {{ errorMessage }}
 
