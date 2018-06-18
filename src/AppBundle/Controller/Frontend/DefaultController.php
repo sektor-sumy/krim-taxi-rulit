@@ -23,7 +23,6 @@ class DefaultController extends Controller
 
         $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
         $cityIn = $this->getDoctrine()->getRepository(City::class)->getInByActiveTransportIntercity();
-//dump($cityIn); die;
 
         return $this->render('frontend/homepage.html.twig', [
             'transportIntercityes' => $transportIntercityes,
@@ -40,11 +39,9 @@ class DefaultController extends Controller
     public function priceAction(Request $request)
     {
         $transportIntercityes = $this->getDoctrine()->getRepository(TransportIntercity::class)->findAll();
-
         $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->getByActiveTransportIntercity();
-
         $cityFrom = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
-        $cityIn = $this->getDoctrine()->getRepository(City::class)->getFromByActiveTransportIntercity();
+        $cityIn = $this->getDoctrine()->getRepository(City::class)->getInByActiveTransportIntercity();
 
 
         return $this->render('frontend/price.html.twig', [
