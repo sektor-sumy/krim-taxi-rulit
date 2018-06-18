@@ -22,10 +22,13 @@ class TransportClassController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $errorMessage = $request->get('errorMessage');
+
         $transportClasses = $this->getDoctrine()->getRepository(TransportClass::class)->findAll();
 
         return $this->render('admin/transport-class/list.html.twig', [
             'transportClasses' => $transportClasses,
+            'errorMessage' => $errorMessage
         ]);
     }
 
@@ -115,16 +118,18 @@ class TransportClassController extends Controller
         $form = $this->createDeleteForm($transportClass);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-            try {
-                $em->remove($transportClass);
-                $em->flush();
-            } catch (\Exception $e) {
-                $this->get('logger')->error($e, ['exception' => $e]);
-                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
-            }
+        try {
+            $em->remove($transportClass);
+            $em->flush();
+        } catch (\Exception $e) {
+            $this->get('logger')->error($e, ['exception' => $e]);
+            $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
+
+            return $this->redirectToRoute('admin.transport-class', [
+                'errorMessage' => 'Данный класс имеет зависимости в других таблицах.'
+            ]);
         }
 
         return $this->redirectToRoute('admin.transport-class');
@@ -144,8 +149,7 @@ class TransportClassController extends Controller
                 'transportClass' => $transportClass->getId()
             ]))
             ->setMethod('DELETE')
-            ->getForm()
-            ;
+            ->getForm();
     }
 
 }

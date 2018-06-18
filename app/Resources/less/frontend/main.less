@@ -1,18 +1,48 @@
-.sub-navbar {
-  height: 44px;
 
-  .sn-phone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    align-content: center;
-    height: 44px;
-    float: right; margin-right: 20px
+.logo-span {
+  height: 200px;
+  @media (max-width: 576px) {
+    height: auto;
   }
-  .sn-but {
+  & span {
+    font-size: 32px;
+    color: #ff0000;
+    line-height: 180px;
+    margin-left: 20px;
 
+    @media (max-width: 576px) {
+      line-height: 40px;
+      margin-left: 0px;
+    }
   }
+}
+
+.btns-block {
+  display: flex;
+  width: 100%;
+  align-items: self-start;
+  justify-content: center;
+  & i {
+    margin: 10px;
+  }
+}
+
+
+
+span.sn-phone {
+  font-size: 30px;
+}
+
+.head-float-left {
+  float: left;
+  text-align: center;
+  @media (max-width: 576px) { float: none; }
+}
+
+.block-phone {
+  height: 148px;
+
+  @media (max-width: 970px) { height: auto; }
 }
 
 

@@ -52,6 +52,7 @@ a:focus {
     margin-bottom: 0;
     background-color: #ffffff;
     height: auto;
+    border-color: #fff;
 }
 .navbar-brand img {
     height: 30px;
@@ -103,7 +104,7 @@ a:focus {
 #tf-header .breadcrumb > li a { color: #ffffff }
 /* Home Style */
 #tf-home {
-    background: url('/img/bg/bg1.jpg');
+    background: url('/img/bg/bg2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

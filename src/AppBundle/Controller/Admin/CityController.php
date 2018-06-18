@@ -20,10 +20,13 @@ class CityController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $errorMessage = $request->get('errorMessage');
+
         $citys = $this->getDoctrine()->getRepository(City::class)->findAll();
 
         return $this->render('admin/city/list.html.twig', [
             'citys' => $citys,
+            'errorMessage' => $errorMessage
         ]);
     }
 
@@ -116,16 +119,18 @@ class CityController extends Controller
         $form = $this->createDeleteForm($city);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-            try {
-                $em->remove($city);
-                $em->flush();
-            } catch (\Exception $e) {
-                $this->get('logger')->error($e, ['exception' => $e]);
-                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
-            }
+        try {
+            $em->remove($city);
+            $em->flush();
+        } catch (\Exception $e) {
+            $this->get('logger')->error($e, ['exception' => $e]);
+            $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
+
+            return $this->redirectToRoute('admin.city', [
+                'errorMessage' => 'Данный город имеет зависимости в других таблицах.'
+            ]);
         }
 
         return $this->redirectToRoute('admin.city');

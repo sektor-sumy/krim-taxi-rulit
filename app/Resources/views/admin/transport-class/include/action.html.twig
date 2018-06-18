@@ -9,3 +9,15 @@
         </a>
     </div>
 </div>
+
+{% if errorMessage|default('') != '' %}
+    <div class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+
+        <a href="{{ path('admin.city') }}">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </a>
+    </div>
+{% endif %}
