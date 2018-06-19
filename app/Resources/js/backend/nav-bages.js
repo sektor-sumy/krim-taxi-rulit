@@ -14,4 +14,5 @@ $(document).ready(function () {
     }
     uploadBages('message');
     uploadBages('callback');
+    uploadBages('order-car');
 });

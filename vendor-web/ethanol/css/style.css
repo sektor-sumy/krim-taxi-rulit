@@ -966,6 +966,7 @@ p.help-block.text-danger ul li {
 /* Footer */
 #tf-footer {
     padding: 3% 0 2% 0;
+    margin-top: 20px;
     background-color: #e5b112;
     color: #ffffff;
 }
