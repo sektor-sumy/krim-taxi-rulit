@@ -3,10 +3,13 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\City;
+use AppBundle\Entity\OrderCar;
 use AppBundle\Entity\TransportClass;
 use AppBundle\Entity\TransportIntercity;
+use http\Env\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Message;
 
@@ -49,6 +52,41 @@ class DefaultController extends Controller
             'transportClasses' => $transportClasses,
             'cityFrom' => $cityFrom,
             'cityIn' => $cityIn
+        ]);
+    }
+
+    /**
+     * @Route("/cars", name="frontend.cars")
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function carsAction(Request $request)
+    {
+        $orderCar = new OrderCar();
+        $form = $this->createForm('AppBundle\Form\OrderCarType', $orderCar);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $orderCar = $form->getData();
+
+            try {
+                $em->persist($orderCar);
+                $em->flush();
+            } catch (\Exception $e) {
+                dump($e); die;
+                $this->get('logger')->error($e, ['exception' => $e]);
+                $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
+            }
+
+            return $this->redirectToRoute('frontend.cars');
+        }
+
+
+        return $this->render('frontend/cars.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 

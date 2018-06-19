@@ -16,9 +16,9 @@ class OrderCar
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     /**
-     * @ORM\Column(name="car", type="string", nullable=false, unique=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TransportClass")
+     * @ORM\JoinColumn(name="car", referencedColumnName="id")
      */
     protected $car;
 
@@ -59,7 +59,8 @@ class OrderCar
 
     public function __construct()
     {
-
+        $this->createdAt = new \DateTime();
+        $this->viewedAt = false;
     }
 
     /**

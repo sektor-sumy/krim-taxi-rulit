@@ -9,6 +9,6 @@
 {% block javascript_vendor %}
     {{ parent() }}
     <script>
-        $('a[href="#transport-class-{{ transportClasses[0].nameTranslate }}"]').tab('show')
+        $('a[href="#transport-class-{{ transportClasses[0].nameTranslate|default('') }}"]').tab('show')
     </script>
 {% endblock %}

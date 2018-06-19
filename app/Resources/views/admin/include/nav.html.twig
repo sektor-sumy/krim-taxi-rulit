@@ -20,6 +20,14 @@
                     Сообщения <span id="nav-badge-message" class="badge badge-pill badge-success invisible">0</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.order-car') == app.request.pathinfo|slice(0,path('admin.order-car')|length)  %} active {% endif %}"
+                   href="{{ path('admin.order-car') }}">
+                    <i class="fas fa-car"></i>
+                    Заказы авто <span id="nav-badge-order-car" class="badge badge-pill badge-success invisible">0</span>
+                </a>
+            </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
