@@ -1,0 +1,44 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Партнеры - Список{% endblock %}
+
+{% block content %}
+
+{% include('admin/partner/include/action.html.twig') %}
+
+<h3>Список</h3>
+<div class="table-responsive">
+    <table class="table table-hover admin-control">
+        <thead class="thead-dark">
+            <tr>
+                <th class="id">id</th>
+                <th>Лого</th>
+                <th>Название</th>
+                <th>Описание (м)</th>
+                <th>Описание (б)</th>
+                <th>Приоритет</th>
+                <th>Активность</th>
+                <th class="action">Настройки</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for city in partners %}
+            <tr>
+                <td class="id">{{ city.id }}</td>
+                <td>{{ city.name }}</td>
+                <td class="action">
+
+                    <a href="{{ path('admin.city.edit', { 'city': city.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <a href="{{ path('admin.city.delete', { 'city': city.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
