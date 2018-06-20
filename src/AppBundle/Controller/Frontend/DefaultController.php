@@ -4,8 +4,11 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\City;
 use AppBundle\Entity\OrderCar;
+use AppBundle\Entity\Partner;
 use AppBundle\Entity\TransportClass;
 use AppBundle\Entity\TransportIntercity;
+use AppBundle\Form\PartnerType;
+use AppBundle\Repository\PartnerRepository;
 use http\Env\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -87,6 +90,18 @@ class DefaultController extends Controller
 
         return $this->render('frontend/cars.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/partners", name="frontend.partners")
+     */
+    public function partnersAction(Request $request)
+    {
+        $partners = $this->getDoctrine()->getRepository(Partner::class)->getAllActive();
+
+        return $this->render('frontend/partners.html.twig', [
+            'partners' => $partners,
         ]);
     }
 
