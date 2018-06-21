@@ -3,12 +3,29 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
 
-                <h3>Партнеры</h3>
-
-
+            <div class="container">
+                <div class="section-header">
+                    <h2>НАШИ <span class="highlight"><strong>Партнеры</strong></span></h2>
+                </div>
             </div>
+
+                {% for partner in partners %}
+                    <div class="col-md-6">
+                        <div class="partner-block">
+                            <div class="partner-image">
+                                <img src="{{ vich_uploader_asset(partner, 'logo') }}" alt="" style="width: 100%">
+                            </div>
+                            <div class="partner-content">
+                                <h3>{{ partner.name }}</h3>
+                                <span>{{ partner.shortInfo|slice(0,140) }}</span>
+                                <a href="#" class="partner-full">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
         </div>
     </div>
     {{ parent() }}

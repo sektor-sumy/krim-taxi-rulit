@@ -24,9 +24,7 @@ class PartnerType extends AbstractType
             ->add('shortInfo', TextType::class, ['label' => 'Описание (м)'])
             ->add('longInfo', TextareaType::class, ['label' => 'Описание (б)'])
             ->add('priority', TextType::class, ['label' => 'Приоритет'])
-            ->add('logo', VichImageType::class, [
-                'required' => true,
-            ])
+            ->add('logo', VichImageType::class, ['label' => 'Логотип', 'required'=>false])
         ;
     }
 

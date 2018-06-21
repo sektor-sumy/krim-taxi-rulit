@@ -12,6 +12,7 @@ class PartnerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p')
             ->select('p')
             ->where('p.isActive = true')
+            ->orderBy('p.priority', 'ASC')
             ->getQuery();
 
         return $qb->execute();
