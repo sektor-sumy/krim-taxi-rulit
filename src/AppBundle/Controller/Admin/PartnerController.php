@@ -5,10 +5,16 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Partner;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\View\View;
 
 /**
  * Class PartnerController
@@ -79,24 +85,23 @@ class PartnerController extends Controller
     public function editAction(Request $request, Partner $partner)
     {
         $deleteForm = $this->createDeleteForm($partner);
-        $editForm = $this->createForm('AppBundle\Form\CityType', $partner);
+        $editForm = $this->createForm('AppBundle\Form\PartnerType', $partner);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             try {
-                $partner->setNameTranslate();
+
                 $this->getDoctrine()->getManager()->flush();
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);
                 $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
             }
 
-            return $this->redirectToRoute('admin.city');
+            return $this->redirectToRoute('admin.partner');
         }
-        return $this->render('admin/city/edit.html.twig', [
+        return $this->render('admin/partner/edit.html.twig', [
             'partner' => $partner,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView()
         ]);
     }
 
@@ -148,5 +153,35 @@ class PartnerController extends Controller
             ->getForm()
             ;
     }
+
+    /**
+     * @Rest\Get("/activated", name="api.partner.activated")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function activatedAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $partner = $em->getRepository(Partner::class)->find($request->get('id'));
+
+        if ($partner->getisActive()) {
+            $partner->setIsActive(false);
+        } else {
+            $partner->setIsActive(true);
+        }
+
+        try {
+            $em->persist($partner);
+            $em->flush();
+        } catch (\Exception $e) {
+            $this->get('logger')->error($e, ['exception' => $e]);
+            $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
+            return new JsonResponse(['count'=>'Error']);
+        }
+
+        return new JsonResponse(['count'=>'Ok']);
+    }
+
 
 }

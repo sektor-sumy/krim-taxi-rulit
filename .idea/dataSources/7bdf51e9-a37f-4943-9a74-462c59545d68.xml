@@ -1259,138 +1259,149 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="239" name="name">
+    <column id="298" parent="239" name="logoName">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="299" parent="239" name="short_info">
+    <column id="299" parent="239" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="239" name="long_info">
+    <column id="300" parent="239" name="short_info">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="239" name="priority">
+    <column id="301" parent="239" name="long_info">
       <Position>5</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="302" parent="239" name="priority">
+      <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="239" name="is_active">
-      <Position>6</Position>
+    <column id="303" parent="239" name="is_active">
+      <Position>7</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="303" parent="239" name="PRIMARY">
+    <column id="304" parent="239" name="updated_at">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="305" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="304" parent="240" name="id">
+    <column id="306" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="240" name="name">
+    <column id="307" parent="240" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="240" name="name_translate">
+    <column id="308" parent="240" name="name_translate">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="240" name="priority">
+    <column id="309" parent="240" name="priority">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="308" parent="240" name="UNIQ_7044BE675E237E06">
+    <index id="310" parent="240" name="UNIQ_7044BE675E237E06">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="309" parent="240" name="PRIMARY">
+    <key id="311" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="310" parent="240" name="UNIQ_7044BE675E237E06">
+    <key id="312" parent="240" name="UNIQ_7044BE675E237E06">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>UNIQ_7044BE675E237E06</UnderlyingIndexName>
     </key>
-    <column id="311" parent="241" name="id">
+    <column id="313" parent="241" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="241" name="city_from">
+    <column id="314" parent="241" name="city_from">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="241" name="city_in">
+    <column id="315" parent="241" name="city_in">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="241" name="transport_class">
+    <column id="316" parent="241" name="transport_class">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="241" name="price_type">
+    <column id="317" parent="241" name="price_type">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="241" name="price">
+    <column id="318" parent="241" name="price">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="317" parent="241" name="IDX_8A7813155A549C18">
+    <index id="319" parent="241" name="IDX_8A7813155A549C18">
       <ColNames>city_from</ColNames>
     </index>
-    <index id="318" parent="241" name="IDX_8A7813156B798BB1">
+    <index id="320" parent="241" name="IDX_8A7813156B798BB1">
       <ColNames>city_in</ColNames>
     </index>
-    <index id="319" parent="241" name="IDX_8A7813157044BE67">
+    <index id="321" parent="241" name="IDX_8A7813157044BE67">
       <ColNames>transport_class</ColNames>
     </index>
-    <key id="320" parent="241" name="PRIMARY">
+    <key id="322" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="321" parent="241" name="FK_8A7813155A549C18">
+    <foreign-key id="323" parent="241" name="FK_8A7813155A549C18">
       <ColNames>city_from</ColNames>
       <RefSchemaName>krim</RefSchemaName>
       <RefTableName>city</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="322" parent="241" name="FK_8A7813156B798BB1">
+    <foreign-key id="324" parent="241" name="FK_8A7813156B798BB1">
       <ColNames>city_in</ColNames>
       <RefSchemaName>krim</RefSchemaName>
       <RefTableName>city</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="323" parent="241" name="FK_8A7813157044BE67">
+    <foreign-key id="325" parent="241" name="FK_8A7813157044BE67">
       <ColNames>transport_class</ColNames>
       <RefSchemaName>krim</RefSchemaName>
       <RefTableName>transport_class</RefTableName>

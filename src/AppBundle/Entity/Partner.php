@@ -3,10 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PartnerRepository")
  * @ORM\Table(name="partner")
+ * @Vich\Uploadable
  */
 class Partner
 {
@@ -16,6 +20,18 @@ class Partner
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @Vich\UploadableField(mapping="partner_avatar", fileNameProperty="logoName")
+     * @var File
+     */
+    private $logo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $logoName;
 
     /**
      * @ORM\Column(name="name", type="string")
@@ -42,6 +58,11 @@ class Partner
      */
     protected $isActive;
 
+    /**
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -62,6 +83,54 @@ class Partner
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogoName()
+    {
+        return $this->logoName;
+    }
+
+    /**
+     * @param string $logoName
+     */
+    public function setLogoName($logoName)
+    {
+        $this->logoName = $logoName;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return File
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param File $logo
+     */
+    public function setLogo(File $image = null)
+    {
+        $this->logo = $image;
     }
 
     /**

@@ -17,7 +17,7 @@
                 <th>Описание (м)</th>
                 <th>Описание (б)</th>
                 <th>Приоритет</th>
-                <th>Активность</th>
+                <th  class="action">Активность</th>
                 <th class="action">Настройки</th>
             </tr>
             </thead>
@@ -25,15 +25,23 @@
             {% for partner in partners %}
                 <tr>
                     <td class="id">{{ partner.id }}</td>
-                    <td>logo</td>
+                    <td><img src="{{ vich_uploader_asset(partner, 'logo') }}" alt="" class="logo"></td>
 
                     <td>{{ partner.name }}</td>
                     <td>{{ partner.shortInfo }}</td>
                     <td>{{ partner.longInfo }}</td>
                     <td>{{ partner.priority }}</td>
-                    <td>{{ partner.isActive }}</td>
+                    <td style="text-align: center">
+                        <label style="margin: 0">
+                            <input type="checkbox" class="activated-partner label__checkbox" data-id="{{ partner.id }}" type="checkbox" {% if partner.isActive %}checked{% endif %}>
+                            <span class="label__text">
+                              <span class="label__check">
+                                <i class="fa fa-check icon"></i>
+                              </span>
+                            </span>
+                        </label>
+                    </td>
                     <td class="action">
-
                         <a href="{{ path('admin.partner.edit', { 'partner': partner.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
                             <i class="fas fa-pencil-alt"></i>
                         </a>

@@ -1,13 +1,13 @@
 {% extends 'admin/main.html.twig' %}
 
-{% block title %}Города - Добавить новый{% endblock %}
+{% block title %}Партнеры - Добавить новый{% endblock %}
 
 {% block content %}
 
 {% include('admin/city/include/action.html.twig') %}
 
 <h2>Добавление</h2>
-<div class="table-responsive">
+<div class="col-md-6">
     {{ form_start(form) }}
     <div class="box-body">
         <div class="form-group">
@@ -25,6 +25,10 @@
         <div class="form-group">
             {{ form_label(form.priority) }}
             {{ form_widget(form.priority, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.logo) }}
+            {{ form_widget(form.logo, {'attr':{'class':'form-control'}}) }}
         </div>
         <input class="btn btn-success btn-sm" type="submit" value="Добавить" />
     </div>
