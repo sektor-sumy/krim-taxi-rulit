@@ -1,0 +1,15 @@
+{% extends 'frontend/main.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-12 partner-page">
+            <h1>{{ partner.name }}</h1>
+            <p class="partner-message">{{ partner.shortInfo }}</p>
+            <div class="partner-picture-block">
+                <img class="partner-picture" src="{{ vich_uploader_asset(partner, 'logo') }}" alt="">
+            </div>
+            <p class="partner-info">{{ partner.longInfo|raw }}</p>
+        </div>
+    </div>
+{% endblock %}
+

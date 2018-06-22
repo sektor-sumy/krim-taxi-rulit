@@ -1,6 +1,7 @@
 app_frontend:
     resource: '@AppBundle/Controller/Frontend/'
     type: annotation
+    prefix: /
 
 app_backend:
     resource: '@AppBundle/Controller/Admin/'

@@ -1,5 +1,14 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/" target="_blank">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="sidebar-span">Открыть сайт</span>
+                </a>
+            </li>
+        </ul>
+
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Фид</span>
         </h6>
@@ -42,13 +51,14 @@
                     Межгород
                 </a>
             </li>
-            {#<li class="nav-item">#}
-                {#<a class="nav-link" href="#">#}
-                    {#<span data-feather="layers"></span>#}
-                    {#<i class="fas fa-retweet"></i>#}
-                    {#Городские перевозки#}
-                {#</a>#}
-            {#</li>#}
+            <li class="nav-item">
+                <a class="nav-link
+                    {% if path('admin.partner') == app.request.pathinfo|slice(0,path('admin.partner')|length)  %} active {% endif %}"
+                   href="{{ path('admin.partner') }}">
+                    <i class="fas fa-handshake"></i>
+                    Партнеры
+                </a>
+            </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

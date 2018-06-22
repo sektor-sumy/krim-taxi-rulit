@@ -1,0 +1,58 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Партнеры - Список{% endblock %}
+
+{% block content %}
+
+    {% include('admin/partner/include/action.html.twig') %}
+
+    <h3>Список</h3>
+    <div class="table-responsive">
+        <table class="table table-hover admin-control">
+            <thead class="thead-dark">
+            <tr>
+                <th class="id">id</th>
+                <th>Лого</th>
+                <th>Название</th>
+                <th>Описание (м)</th>
+                <th>Описание (б)</th>
+                <th>Приоритет</th>
+                <th  class="action">Активность</th>
+                <th class="action">Настройки</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for partner in partners %}
+                <tr>
+                    <td class="id">{{ partner.id }}</td>
+                    <td><img src="{{ vich_uploader_asset(partner, 'logo') }}" alt="" class="logo"></td>
+
+                    <td>{{ partner.name }}</td>
+                    <td>{{ partner.shortInfo }}</td>
+                    <td>{{ partner.longInfo|striptags }}</td>
+                    <td>{{ partner.priority }}</td>
+                    <td style="text-align: center">
+                        <label style="margin: 0">
+                            <input type="checkbox" class="activated-partner label__checkbox" data-id="{{ partner.id }}" type="checkbox" {% if partner.isActive %}checked{% endif %}>
+                            <span class="label__text">
+                              <span class="label__check">
+                                <i class="fa fa-check icon"></i>
+                              </span>
+                            </span>
+                        </label>
+                    </td>
+                    <td class="action">
+                        <a href="{{ path('admin.partner.edit', { 'partner': partner.id }) }}" class="btn btn-outline-primary btn-sm ml-1" title="Редактировать">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a href="{{ path('admin.partner.delete', { 'partner': partner.id }) }}" class="btn btn-outline-danger btn-sm ml-1" title="Удалить">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

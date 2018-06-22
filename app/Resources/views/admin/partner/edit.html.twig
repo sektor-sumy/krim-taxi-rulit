@@ -1,0 +1,47 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Партнеры - Редактирование{% endblock %}
+
+{% block content %}
+
+{% include('admin/partner/include/action.html.twig') %}
+
+<h2>Редактирование</h2>
+<div class="col-md-6">
+    {{ form_start(edit_form) }}
+    <div class="box-body">
+        <div class="form-group">
+            {{ form_label(edit_form.name) }}
+            {{ form_widget(edit_form.name, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.shortInfo) }}
+            {{ form_widget(edit_form.shortInfo, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.longInfo) }}
+            {{ form_widget(edit_form.longInfo, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.priority) }}
+            {{ form_widget(edit_form.priority, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.logo) }}
+            {{ form_widget(edit_form.logo, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <input class="btn btn-success btn-sm" type="submit" value="Сохранить" />
+    </div>
+    {{ form_end(edit_form) }}
+</div>
+
+{% endblock %}
+
+{% block javascript_vendor %}
+    <script>
+        $(document).ready(function() {
+            CKEDITOR.replace( 'appbundle_partner_longInfo' );
+        });
+    </script>
+    {{ parent() }}
+{% endblock %}
