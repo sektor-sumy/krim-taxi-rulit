@@ -36,3 +36,12 @@
 </div>
 
 {% endblock %}
+
+{% block javascript_vendor %}
+    <script>
+        $(document).ready(function() {
+            CKEDITOR.replace( 'appbundle_partner_longInfo' );
+        });
+    </script>
+    {{ parent() }}
+{% endblock %}

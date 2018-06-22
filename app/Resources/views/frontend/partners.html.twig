@@ -19,7 +19,7 @@
                             <div class="partner-content">
                                 <h3>{{ partner.name }}</h3>
                                 <span>{{ partner.shortInfo|slice(0,140) }}</span>
-                                <a href="#" class="partner-full">Подробнее</a>
+                                <a href="{{ path('frontend.partner.page', {'id':partner.id}) }}" class="partner-full">Подробнее</a>
                             </div>
                         </div>
                     </div>

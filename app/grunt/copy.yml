@@ -19,6 +19,14 @@ default:
         dest: web/admin/js
 
 
+#ckeditor
+     -
+        expand: true
+        flatten: false
+        cwd: "./vendor-web/ckeditor/"
+        src:
+          - "**/*.*"
+        dest: web/ckeditor
 
 #frontend
      -
