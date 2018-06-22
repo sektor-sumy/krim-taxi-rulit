@@ -79,7 +79,6 @@ class DefaultController extends Controller
                 $em->persist($orderCar);
                 $em->flush();
             } catch (\Exception $e) {
-                dump($e); die;
                 $this->get('logger')->error($e, ['exception' => $e]);
                 $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));
             }
@@ -88,8 +87,11 @@ class DefaultController extends Controller
         }
 
 
+        $coicecar = $request->get('car');
+
         return $this->render('frontend/cars.html.twig', [
             'form' => $form->createView(),
+            'choiceCar' => $coicecar
         ]);
     }
 

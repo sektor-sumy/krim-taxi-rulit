@@ -8,7 +8,9 @@
             <div class="partner-picture-block">
                 <img class="partner-picture" src="{{ vich_uploader_asset(partner, 'logo') }}" alt="">
             </div>
-            <p class="partner-info">{{ partner.longInfo|raw }}</p>
+            <div class="partner-info">
+                {{ partner.longInfo|raw }}
+            </div>
         </div>
     </div>
 {% endblock %}
