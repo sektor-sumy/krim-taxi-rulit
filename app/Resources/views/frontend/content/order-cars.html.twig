@@ -1,23 +1,60 @@
+{% if path('frontend.cars') == app.request.pathinfo|slice(0,path('frontend.cars')|length)  %}
+{% set param_page = "order" %}
+{% else %}
+{% set param_page = "other" %}
+{% endif %}
+
 <div class="container">
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/2.png') }}" alt="">
         <p class="name-order-class">Эконом</p>
-        <a href="{{ url('frontend.cars') }}">
-            <button class="btn btn-primary color">Выбрать</button>
-        </a>
+
+        {% if param_page == "order" %}
+            <button class="btn btn-primary color choice-car" data-id="1">Выбрать</button>
+        {% else %}
+            <a href="{{ url('frontend.cars', {'car':'1'}) }}">
+                <button class="btn btn-primary color">Выбрать</button>
+            </a>
+        {% endif %}
     </div>
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/3.png') }}" alt="">
         <p class="name-order-class">Комфорт</p>
-        <a href="{{ url('frontend.cars') }}">
-            <button class="btn btn-primary color">Выбрать</button>
-        </a>
+
+        {% if param_page == "order" %}
+            <button class="btn btn-primary color choice-car" data-id="2">Выбрать</button>
+        {% else %}
+            <a href="{{ url('frontend.cars', {'car':'2'}) }}">
+                <button class="btn btn-primary color">Выбрать</button>
+            </a>
+        {% endif %}
     </div>
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/4.png') }}" alt="">
         <p class="name-order-class">Минивэн</p>
-        <a href="{{ url('frontend.cars') }}">
-            <button class="btn btn-primary color">Выбрать</button>
-        </a>
+
+        {% if param_page == "order" %}
+            <button class="btn btn-primary color choice-car" data-id="3">Выбрать</button>
+        {% else %}
+            <a href="{{ url('frontend.cars', {'car':'3'}) }}">
+                <button class="btn btn-primary color">Выбрать</button>
+            </a>
+        {% endif %}
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var choice_car = $('.choice-car');
+
+        choice_car.click(function (e) {
+            var carId = $(this).data('id');
+
+            $("#appbundle_ordercar_car").val(carId).change();
+        });
+
+        {% if choiceCar|default('') %}
+            $("#appbundle_ordercar_car").val({{ choiceCar }}).change();
+        {% endif %}
+    });
+</script>
