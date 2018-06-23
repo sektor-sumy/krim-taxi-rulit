@@ -78,6 +78,8 @@ class DefaultController extends Controller
             try {
                 $em->persist($orderCar);
                 $em->flush();
+                $stat = $this->get('app.service.email_notification')->sendAdminNotificationOrderCar($orderCar);
+
             } catch (\Exception $e) {
                 $this->get('logger')->error($e, ['exception' => $e]);
                 $this->addFlash('error', $this->get('translator')->trans('Unexpected error occurred.'));

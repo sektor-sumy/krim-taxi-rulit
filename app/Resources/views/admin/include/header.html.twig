@@ -1,5 +1,10 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('admin.main') }}">Администратор</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap open-navbar" style="color: white; cursor: pointer;">
+            <i class="fas fa-bars"></i>
+        </li>
+    </ul>
     {#<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">#}
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -7,3 +12,18 @@
         </li>
     </ul>
 </nav>
+
+<script>
+    $(document).ready(function () {
+        var navbar = $('.bg-light.sidebar');
+
+        $('.open-navbar').click(function () {
+
+           if (navbar.hasClass('d-none')) {
+               navbar.removeClass('d-none');
+           } else {
+               navbar.addClass('d-none');
+           }
+       });
+    });
+</script>

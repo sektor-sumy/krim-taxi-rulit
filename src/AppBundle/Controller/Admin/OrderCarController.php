@@ -26,7 +26,7 @@ class OrderCarController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $orders = $this->getDoctrine()->getRepository(OrderCar::class)->findAll();
+        $orders = $this->getDoctrine()->getRepository(OrderCar::class)->getAllOrderByDesc();
 
         return $this->render('admin/order-car/list.html.twig', [
             'orders' => $orders,

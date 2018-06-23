@@ -15,8 +15,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Откуда/Куда</th>
-                        {% for city in cityIn %}
+                        <th>Куда \ Откуда</th>
+                        {% for city in cityFrom %}
                             <th>
                                 {{ city.name }}
                             </th>
@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for city_from in cityFrom %}
+                    {% for city_from in cityIn %}
                         <tr>
                             <td>
                                 {{ city_from.name }}

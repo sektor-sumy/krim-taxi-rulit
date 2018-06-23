@@ -3,24 +3,26 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\TransportIntercity;
 
-class OrderCarRepository extends EntityRepository
+class SettingsSiteRepository extends EntityRepository
 {
-    function getCountNew()
+
+    function allNotActivated()
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('count(p)')
-            ->where('p.viewedAt = 0')
+            ->update()
+            ->set('p.isActive','false')
             ->getQuery();
 
         return $qb->execute();
     }
 
-    function getAllOrderByDesc()
+    function getActive()
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p')
-            ->orderBy('p.id', 'DESC')
+            ->where('p.isActive = true')
             ->getQuery();
 
         return $qb->execute();
