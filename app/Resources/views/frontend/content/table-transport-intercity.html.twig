@@ -24,16 +24,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for city_from in cityIn %}
+                    {% for city_in in cityIn %}
                         <tr>
                             <td>
-                                {{ city_from.name }}
+                                {{ city_in.name }}
                             </td>
-                            {% for city_in in cityIn %}
+                            {% for city_from in cityFrom %}
                                 <td>
                                     {% if city_in != city_from %}
                                         {% for transport in transportIntercityes %}
-                                            {% if transport.cityFrom.id == city_from.id and transport.cityIn.id == city_in.id and transport.class.id == transportClass.id %}
+                                            {% if transport.cityIn.id == city_in.id and transport.cityFrom.id == city_from.id and transport.class.id == transportClass.id %}
                                                 {% if transport.priceType %}
                                                     {{ transport.priceType }}
                                                 {% else %}
