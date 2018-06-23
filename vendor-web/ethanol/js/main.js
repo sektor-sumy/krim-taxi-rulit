@@ -121,11 +121,6 @@ function main() {
     /*====================================
     Nivo Lightbox 
     ======================================*/
-    // Agency Portfolio Popup
-    $('#itemsWork a , #itemsWorkTwo a , #itemsWorkThree a , #popup a').nivoLightbox({
-            effect: 'slideDown',  
-            keyboardNav: true,                            
-        });
 
     $(document).ready(function() {
  

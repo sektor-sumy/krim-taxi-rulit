@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}КРЫМ ТАКСИ РУЛИТ{% endblock %}</title>
+
+    <meta name="description" content="Такси по Крыму. Низкие фиксированные цены. Симферополь, Севастополь, Ялта и т.д. Бесплатный звонок и онлайн заказ такси. Заказать автомобиль.">
+    <meta name="keywords" content="крым такси, трансфер аэропорт, такси симферополь, заказать авто, заказать такси в крыму, такси аэропорт">
+
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -60,10 +64,6 @@
 
 <script type="text/javascript" src="/js/SmoothScroll.js"></script>
 
-<!-- Google Map -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&amp;sensor=false"></script>
-<script type="text/javascript" src="/js/map.js"></script>
-
 <!-- Parallax Effects -->
 <script type="text/javascript" src="/js/skrollr.js"></script>
 {#<script type="text/javascript" src="js/imagesloaded.js"></script>#}
@@ -71,16 +71,13 @@
 <!-- Portfolio Filter -->
 <script type="text/javascript" src="/js/jquery.isotope.js"></script>
 
-<!-- LightBox Nivo -->
-{#<script type="text/javascript" src="js/nivo-lightbox.min.js"></script>#}
-
 <!-- Contact page-->
 <script type="text/javascript" src="/js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="/js/contact.js"></script>
 
 <!-- Javascripts
 ================================================== -->
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/frontend.js') }}"></script>
 {% block javascript_vendor %}{% endblock %}
 </body>

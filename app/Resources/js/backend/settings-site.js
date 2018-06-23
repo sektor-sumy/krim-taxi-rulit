@@ -1,15 +1,15 @@
 
 $( document ).ready(function (e) {
 
-    var inmenu = $('.activated-partner');
+    var inmenu = $('.activated-settings');
     inmenu.click(function (e) {
 
-        var partnerId = $(this).data('id');
+        var settingsId = $(this).data('id');
 
         $.ajax({
             type: "GET",
-            data: { 'id': partnerId },
-            url: "/admin/partner/activated",
+            data: { 'id': settingsId },
+            url: "/admin/settings/activated",
             success: function(data){
             }
         });

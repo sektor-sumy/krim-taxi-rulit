@@ -4,6 +4,8 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Callback;
 use AppBundle\Entity\Message;
+use AppBundle\Entity\OrderCar;
+use AppBundle\Entity\SettingsSite;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
@@ -54,23 +56,20 @@ class EmailNotificationService
      */
     public function sendAdminNotificationMessage(Message $message)
     {
-        $admins = $this->em->getRepository(User::class)->findAll();
+        $settings = $this->em->getRepository(SettingsSite::class)->getActive();
 
-        foreach ($admins as $admin) {
-            if ($admin->hasRole('ROLE_SUPER_ADMIN'))
-            {
-                $messageToMail = (new \Swift_Message('Новое сообщение [krim-rulit-taxi.ru]'))
-                    ->setFrom('message@krim-rulit-taxi.ru')
-                    ->setTo('krimrulit.taxi@gmail.com')
-                    ->setBody(
-                        $this->templating->render('email/admin/notification.message.html.twig', [
-                            'message' => $message,
-                            'lang' => 'ru',
-                        ]),
-                        'text/html'
-                    );
-                $this->mailer->send($messageToMail);
-            }
+        foreach ($settings as $setting) {
+            $messageToMail = (new \Swift_Message('Новое сообщение [krim-rulit-taxi.ru]'))
+                ->setFrom('message@krim-rulit-taxi.ru')
+                ->setTo($setting->getMail())
+                ->setBody(
+                    $this->templating->render('email/admin/notification.message.html.twig', [
+                        'message' => $message,
+                        'lang' => 'ru',
+                    ]),
+                    'text/html'
+                );
+            $this->mailer->send($messageToMail);
         }
     }
 
@@ -79,23 +78,44 @@ class EmailNotificationService
      */
     public function sendAdminNotificationCallback(Callback $callback)
     {
-        $admins = $this->em->getRepository(User::class)->findAll();
+        $settings = $this->em->getRepository(SettingsSite::class)->getActive();
 
-        foreach ($admins as $admin) {
-            if ($admin->hasRole('ROLE_SUPER_ADMIN'))
-            {
-                $messageToMail = (new \Swift_Message('Обратный звонок [krim-rulit-taxi.ru]'))
-                    ->setFrom('callback@krim-rulit-taxi.ru')
-                    ->setTo('krimrulit.taxi@gmail.com')
-                    ->setBody(
-                        $this->templating->render('email/admin/notification.callback.html.twig', [
-                            'callback' => $callback,
-                            'lang' => 'ru',
-                        ]),
-                        'text/html'
-                    );
-                $this->mailer->send($messageToMail);
-            }
+        foreach ($settings as $setting)
+        {
+            $messageToMail = (new \Swift_Message('Обратный звонок [krim-rulit-taxi.ru]'))
+                ->setFrom('callback@krim-rulit-taxi.ru')
+                ->setTo($setting->getMail())
+                ->setBody(
+                    $this->templating->render('email/admin/notification.callback.html.twig', [
+                        'callback' => $callback,
+                        'lang' => 'ru',
+                    ]),
+                    'text/html'
+                );
+            $this->mailer->send($messageToMail);
+        }
+    }
+
+    /**
+     * @param OrderCar $orderCar
+     */
+    public function sendAdminNotificationOrderCar(OrderCar $orderCar)
+    {
+        $settings = $this->em->getRepository(SettingsSite::class)->getActive();
+
+        foreach ($settings as $setting)
+        {
+            $messageToMail = (new \Swift_Message('Заказ автомобиля [krim-rulit-taxi.ru]'))
+                ->setFrom('callback@krim-rulit-taxi.ru')
+                ->setTo($setting->getMail())
+                ->setBody(
+                    $this->templating->render('email/admin/notification.ordercar.html.twig', [
+                        'orderCar' => $orderCar,
+                        'lang' => 'ru',
+                    ]),
+                    'text/html'
+                );
+            $this->mailer->send($messageToMail);
         }
     }
 }

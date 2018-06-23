@@ -1,0 +1,42 @@
+{% extends 'admin/main.html.twig' %}
+
+{% block title %}Настройки - Редактирование{% endblock %}
+
+{% block content %}
+
+{% include('admin/settings/include/action.html.twig') %}
+
+<h2>Редактирование</h2>
+<div class="table-responsive">
+    {{ form_start(edit_form) }}
+    <div class="box-body">
+        <div class="form-group">
+            {{ form_label(edit_form.phone) }}
+            {{ form_widget(edit_form.phone, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.mail) }}
+            {{ form_widget(edit_form.mail, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.location) }}
+            {{ form_widget(edit_form.location, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.instagram) }}
+            {{ form_widget(edit_form.instagram, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.vk) }}
+            {{ form_widget(edit_form.vk, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(edit_form.facebook) }}
+            {{ form_widget(edit_form.facebook, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <input class="btn btn-success btn-sm" type="submit" value="Сохранить" />
+    </div>
+    {{ form_end(edit_form) }}
+</div>
+
+{% endblock %}
