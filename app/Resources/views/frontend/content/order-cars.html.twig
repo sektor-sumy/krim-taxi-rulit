@@ -4,40 +4,40 @@
 {% set param_page = "other" %}
 {% endif %}
 
-<div class="container" style="font-size: 16px;">
+<div class="container">
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/2.png') }}" alt="">
-        <p class="name-order-class">Эконом</p>
+        <p class="name-order-class" style="font-size: 16px;">Эконом</p>
 
         {% if param_page == "order" %}
-            <button class="btn btn-primary color choice-car" data-id="1">Заказать</button>
+            <button class="btn btn-primary color choice-car" data-id="1" style="font-size: 16px;">Заказать</button>
         {% else %}
             <a href="{{ url('frontend.cars', {'car':'1'}) }}">
-                <button class="btn btn-primary color">Заказать</button>
+                <button class="btn btn-primary color" style="font-size: 16px;">Заказать</button>
             </a>
         {% endif %}
     </div>
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/3.png') }}" alt="">
-        <p class="name-order-class">Комфорт</p>
+        <p class="name-order-class" style="font-size: 16px;">Комфорт</p>
 
         {% if param_page == "order" %}
-            <button class="btn btn-primary color choice-car" data-id="2">Заказать</button>
+            <button class="btn btn-primary color choice-car" data-id="2" style="font-size: 16px;">Заказать</button>
         {% else %}
             <a href="{{ url('frontend.cars', {'car':'2'}) }}">
-                <button class="btn btn-primary color">Заказать</button>
+                <button class="btn btn-primary color" style="font-size: 16px;">Заказать</button>
             </a>
         {% endif %}
     </div>
     <div class="col-md-4 text-center">
         <img src="{{ asset('img/auto-classes/4.png') }}" alt="">
-        <p class="name-order-class">Минивэн</p>
+        <p class="name-order-class" style="font-size: 16px;">Минивэн</p>
 
         {% if param_page == "order" %}
-            <button class="btn btn-primary color choice-car" data-id="3">Заказать</button>
+            <button class="btn btn-primary color choice-car" data-id="3" style="font-size: 16px;">Заказать</button>
         {% else %}
             <a href="{{ url('frontend.cars', {'car':'3'}) }}">
-                <button class="btn btn-primary color">Заказать</button>
+                <button class="btn btn-primary color" style="font-size: 16px;">Заказать</button>
             </a>
         {% endif %}
     </div>
