@@ -109,6 +109,60 @@ $(function() {
     });
 
 
+    $("button#btn-send-order").click(function() {
+
+        $("#modal-order input,textarea").jqBootstrapValidation({
+            preventSubmit: true,
+            submitError: function ($form, event, errors) {
+                // additional error messages or events
+            },
+            submitSuccess: function ($form, event) {
+                event.preventDefault(); // prevent default submit behaviour
+                // get values from FORM
+                var name = $("input#modal-order-name").val();
+                var phone = $("input#modal-order-phone").val();
+                var message = $("input#modal-order-text").val();
+
+                var firstName = name;
+
+                if (firstName.indexOf(' ') >= 0) {
+                    firstName = name.split(' ').slice(0, -1).join(' ');
+                }
+                $.ajax({
+                    url: "/api/message/new",
+                    type: "GET",
+                    data: {
+                        name: name,
+                        phone: phone,
+                        email: '-',
+                        text: message
+                    },
+                    cache: false,
+                    success: function () {
+                        $('#modal-order').trigger("reset");
+                        var overlay = $('.nivo-lightbox-overlay2');
+                        overlay.removeClass('nivo-lightbox-open');
+                        overlay.addClass('nivo-lightbox-close');
+                    },
+                    error: function () {
+                        $('#modal-callback').html("<div class='alert alert-danger'>");
+                        $('#modal-callback > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                            .append("</button>");
+                        $('#modal-callback > .alert-danger').append("<strong>Ивините " + firstName + ", возникла ошибка. Пожалуйста попробуйте позже!");
+                        $('#modal-callback > .alert-danger').append('</div>');
+                        //clear all fields
+                        $('#modal-callback').trigger("reset");
+                    }
+                });
+            },
+            filter: function () {
+                return $(this).is(":visible");
+            }
+        });
+    });
+
+
+
 
     $("a[data-toggle=\"tab\"]").click(function(e) {
         e.preventDefault();
