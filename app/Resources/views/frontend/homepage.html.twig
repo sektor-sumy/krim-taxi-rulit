@@ -6,8 +6,26 @@
         <div class="container">
             <div class="content-heading text-center">
                 <h1>ТАКСИ ПО КРЫМУ</h1>
-                <p class="lead">Честные фиксированные цены<br>Гарантия лучшей цены в Крыму</p>
+                <p class="lead">Не трать время на ожидание такси <br> Мы всегда рядом</p>
                 <a href="#tf-works" class="scroll goto-btn text-uppercase">Перейти к ценам</a>
+            </div>
+        </div>
+
+        <div class="home-absolute-text">
+            <div class="dynamic-text active">
+                Междугороднее такси по крыму - недорого!
+            </div>
+            <div class="dynamic-text">
+                Встречаем в аэропорту симферополь, помощь с багажем, трасфер по крыму
+            </div>
+            <div class="dynamic-text">
+                Честные фиксированные цены
+            </div>
+            <div class="dynamic-text">
+                Гарантия лучшей цены в Крыму
+            </div>
+            <div class="dynamic-text">
+                Такси "Крым Рулит" - комфорт и безопасность
             </div>
         </div>
     </div>
@@ -16,6 +34,16 @@
 
 
 <div class="row">
+
+    <div id="tf-buttons">
+        <div class="container">
+            <div class="section-header">
+                <h2>Заказать <span class="highlight"><strong>такси</strong></span></h2>
+            </div>
+        </div>
+        {% include 'frontend/content/buttons.html.twig' %}
+    </div>
+
     <div id="tf-advantage">
         <div class="container">
             <div class="section-header">
@@ -38,18 +66,27 @@
     <div id="tf-auto">
         <div class="container">
             <div class="section-header">
-                <h2>Заказать <span class="highlight"><strong>автомобиль</strong></span></h2>
-                <h5><em>Все цены указаны в рублях</em></h5>
+                <h2><span class="highlight"><strong>автопарк</strong> </span>нашего такси</h2>
             </div>
         </div>
         {% include 'frontend/content/order-cars.html.twig' %}
+    </div>
+
+    <div id="tf-questions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Часто задаваемые <span class="highlight"><strong>вопросы</strong> </span></h2>
+            </div>
+        </div>
+        {% include 'frontend/content/questions.html.twig' %}
     </div>
 
     <div id="tf-contact">
         <div class="container"> <!-- container -->
             <div class="section-header">
                 <h2>Остались вопросы? <span class="highlight"><strong>Свяжитесь с нами!</strong></span></h2>
-                <h5><em>Мы проконсультируем вас и поможем выбрать услугу</em></h5>
+                <h5><em>Операторы нашего такси работают круглосуточно.<br>
+                        Они проконсультируют Вас по любому вопросу, а также помогут выбрать услугу.</em></h5>
                 {#<div class="fancy"><span><img src="img/favicon.ico" alt="..."></span></div>#}
             </div>
         </div><!-- end container -->
