@@ -195,3 +195,32 @@ ul[role='alert'] {
   }
 }
 
+
+
+
+
+#accordion {
+  & .card {
+
+    & .card-header {
+      border: 1px solid #ffcc34;
+      margin-bottom: 5px;
+      cursor: pointer;
+      padding: 3px 10px;
+      border-radius: 0 50px 50px 0;
+      color: #000;
+      background: #fff;
+      transition: 0.5s;
+      &[aria-expanded="true"] {
+        color: #fff;
+        background: #ffcc34;
+      }
+    }
+    & .card-body {
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+
+  }
+}
